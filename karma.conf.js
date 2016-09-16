@@ -7,6 +7,7 @@ module.exports = function(config) {
   config.set({
     basePath: '',
     browsers: [ 'PhantomJS' ],
+    // browsers: [ 'Chrome' ],
     files: [
       'test/loadtests.js'
     ],
@@ -40,6 +41,7 @@ module.exports = function(config) {
       'karma-mocha-reporter',
       'karma-coverage',
       'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-webpack'
     ]
   });
