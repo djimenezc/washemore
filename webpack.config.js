@@ -1,5 +1,6 @@
 'use strict';
 
+const winston = require('winston');
 const path = require('path');
 const args = require('minimist')(process.argv.slice(2));
 
@@ -15,6 +16,7 @@ if (args._.length > 0 && args._.indexOf('start') !== -1) {
 } else {
   env = 'dev';
 }
+
 process.env.REACT_WEBPACK_ENV = env;
 
 /**
@@ -28,5 +30,7 @@ function buildConfig(wantedEnv) {
 
   return require(path.join(__dirname, 'cfg/' + validEnv));
 }
+
+winston.log('info', `Running env: ${env}`);
 
 module.exports = buildConfig(env);
