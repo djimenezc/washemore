@@ -31,6 +31,16 @@ module.exports = function(config) {
         { type: 'html' },
         { type: 'text' }
       ]
-    }
+    },
+    plugins: [
+      'karma-babel-preprocessor',
+      'karma-sourcemap-loader',
+      'karma-mocha',
+      'karma-chai',
+      'karma-mocha-reporter',
+      'karma-coverage',
+      'karma-phantomjs-launcher',
+      'karma-webpack'
+    ]
   });
 };
