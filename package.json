@@ -6,8 +6,9 @@
   "main": "",
   "scripts": {
     "clean": "rimraf dist/*",
-    "copy": "copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
+    "copy": "copyfiles -f ./src/{index.html,library.html} ./src/favicon.ico ./dist",
     "dist": "npm run copy & webpack --env=dist",
+    "lib": "webpack --env=lib",
     "lint": "eslint ./src",
     "posttest": "npm run lint",
     "release:major": "npm version major && npm publish && git push --follow-tags",
@@ -44,6 +45,7 @@
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.5.0",
     "bower-webpack-plugin": "^0.1.9",
+    "babel-plugin-add-module-exports": "0.1.2",
     "chai": "^3.2.0",
     "copyfiles": "^1.0.0",
     "css-loader": "^0.23.0",
