@@ -39,7 +39,16 @@ let config = Object.assign({}, baseConfig, {
     library: libraryName,
     libraryTarget: 'umd',
     umdNamedDefine: true
-  }
+  },
+  serverConfig: {
+    contentBase: './src/',
+    historyApiFallback: true,
+    hot: true,
+    port: defaultSettings.port,
+    publicPath: '/lib/',
+    noInfo: false
+  },
+  pageToOpen: 'library.html'
 });
 
 winston.log('info', `Generating library at: ${rootDir}`);
@@ -51,11 +60,11 @@ config.module.loaders.push({
   exclude: /(node_modules|bower_components)/,
   externals: {
     'react': 'react', // Case matters here
-    'react-dom' : 'reactDOM' // Case matters here
+    'react-dom': 'reactDOM' // Case matters here
   },
   include: [].concat(
     config.additionalPaths,
-    [ path.join(__dirname, '/../src') ]
+    [path.join(__dirname, '/../src')]
   )
 });
 
