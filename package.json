@@ -7,8 +7,9 @@
   "scripts": {
     "clean": "rimraf dist/*",
     "copy": "copyfiles -f ./src/{index.html,library.html} ./src/favicon.ico ./dist",
+    "copy:lib": "copyfiles -f ./node_modules/react/dist/react.js ./node_modules/react-dom/dist/react-dom.js ./dist/lib/",
     "dist": "npm run copy & webpack --env=dist",
-    "lib": "webpack --env=lib",
+    "lib": "npm run copy:lib; webpack --env=lib",
     "lint": "eslint ./src",
     "posttest": "npm run lint",
     "release:major": "npm version major && npm publish && git push --follow-tags",
@@ -19,7 +20,8 @@
     "serve:lib": "node server.js --env=lib",
     "start": "node server.js --env=dev",
     "test": "karma start",
-    "test:watch": "karma start --autoWatch=true --singleRun=false"
+    "test:watch": "karma start --autoWatch=true --singleRun=false",
+    "postinstall": "node node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
@@ -41,12 +43,12 @@
     "babel-core": "^6.0.0",
     "babel-eslint": "^6.0.0",
     "babel-loader": "^6.0.0",
+    "babel-plugin-add-module-exports": "0.1.2",
     "babel-polyfill": "^6.3.14",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.5.0",
     "bower-webpack-plugin": "^0.1.9",
-    "babel-plugin-add-module-exports": "0.1.2",
     "chai": "^3.2.0",
     "copyfiles": "^1.0.0",
     "css-loader": "^0.23.0",

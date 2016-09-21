@@ -40,6 +40,11 @@ let config = Object.assign({}, baseConfig, {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
+  exclude: /(node_modules|bower_components)/,
+  externals: {
+    'react': 'react', // Case matters here
+    'react-dom': 'reactDOM' // Case matters here
+  },
   serverConfig: {
     contentBase: './src/',
     historyApiFallback: true,
@@ -57,11 +62,6 @@ winston.log('info', `Generating library at: ${rootDir}`);
 config.module.loaders.push({
   test: /\.(js|jsx)$/,
   loader: 'babel',
-  exclude: /(node_modules|bower_components)/,
-  externals: {
-    'react': 'react', // Case matters here
-    'react-dom': 'reactDOM' // Case matters here
-  },
   include: [].concat(
     config.additionalPaths,
     [path.join(__dirname, '/../src')]
