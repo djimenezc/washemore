@@ -7,7 +7,9 @@
     "ecmaVersion": 6,
     "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true
+      "globalReturn": true,
+      "jsx": true,
+      "modules": true
     }
   },
   "env": {
@@ -16,6 +18,18 @@
     "es6": true,
     "node": true,
     "mocha": true
+  },
+  "globals": {
+    "document": false,
+    "escape": false,
+    "navigator": false,
+    "unescape": false,
+    "window": false,
+    "describe": true,
+    "before": true,
+    "it": true,
+    "expect": true,
+    "sinon": true
   },
   "rules": {
     "comma-dangle": 1,

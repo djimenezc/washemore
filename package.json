@@ -9,7 +9,7 @@
     "copy": "copyfiles -f ./src/{index.html,library.html} ./src/favicon.ico ./dist",
     "copy:lib": "copyfiles -f ./node_modules/react/dist/react.js ./node_modules/react-dom/dist/react-dom.js ./dist/lib/",
     "dist": "npm run copy & webpack --env=dist",
-    "lib": "npm run copy:lib; webpack --env=lib",
+    "dist:lib": "npm run copy & npm run copy:lib &  webpack --env=lib",
     "lint": "eslint ./src",
     "posttest": "npm run lint",
     "release:major": "npm version major && npm publish && git push --follow-tags",
