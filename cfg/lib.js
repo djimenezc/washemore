@@ -42,8 +42,18 @@ let config = Object.assign({}, baseConfig, {
   },
   exclude: /(node_modules|bower_components)/,
   externals: {
-    'react': 'react', // Case matters here
-    'react-dom': 'reactDOM' // Case matters here
+    'react': {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react'
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom'
+    }
   },
   serverConfig: {
     contentBase: './src/',
@@ -65,7 +75,11 @@ config.module.loaders.push({
   include: [].concat(
     config.additionalPaths,
     [path.join(__dirname, '/../src')]
-  )
+  ),
+  query: {
+    presets: ['es2015', 'stage-0']
+  }
+
 });
 
 module.exports = config;
