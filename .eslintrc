@@ -29,7 +29,9 @@
     "before": true,
     "it": true,
     "expect": true,
-    "sinon": true
+    "sinon": true,
+    "ReactDOM": true,
+    "React" : true
   },
   "rules": {
     "comma-dangle": 1,

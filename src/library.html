@@ -8,15 +8,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
-  <div id="app">APPLICATION LIBRARY</div>
+<div id="app">APPLICATION LIBRARY</div>
 
-  <script type="text/javascript" src="/lib/react.js"></script>
-  <script type="text/javascript" src="/lib/react-dom.js"></script>
-  <script type="text/javascript" src="/lib/washemo-20.min.js"></script>
+<script type="text/javascript" src="/lib/react.js"></script>
+<script type="text/javascript" src="/lib/react-dom.js"></script>
+<script type="text/javascript" src="/lib/babel.js"></script>
+<script type="text/javascript" src="/lib/washemo-20.min.js"></script>
 
-  <script type="text/javascript">
-//    ReactDOM.render(<App />, document.getElementById('app'));
-  </script>
+<script type="text/babel">
+  const washemo = window['washemo-20'].default;
+  const Main = washemo.Main;
+
+  ReactDOM.render(<Main />, document.getElementById('app'));
+  console.log('Starting html App');
+
+</script>
 
 </body>
 </html>

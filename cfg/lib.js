@@ -16,11 +16,10 @@ const rootDir = `${__dirname}/..`;
 const libDir = `${rootDir}/dist/lib`;
 
 let config = Object.assign({}, baseConfig, {
-  entry: path.join(__dirname, '../src/index'),
+  entry: path.join(__dirname, '../src/lib'),
   cache: false,
   devtool: 'sourcemap',
   plugins: [
-    new webpack.IgnorePlugin(/^(index.js)$/),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
