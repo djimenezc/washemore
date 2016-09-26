@@ -2,7 +2,7 @@
   "name": "washemo-20",
   "private": false,
   "version": "0.0.2",
-  "description": "Widgets Assortment Solve, Homogeneously (with) Expertise, Modelling Operations",
+  "description": "Logtrust components catalog: Widgets Assortment Solve, Homogeneously (with) Expertise, Modelling Operations",
   "main": "",
   "scripts": {
     "clean": "node_modules/.bin/rimraf dist/*",
