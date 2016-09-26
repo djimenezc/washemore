@@ -6,11 +6,11 @@
   "main": "",
   "scripts": {
     "clean": "node_modules/.bin/rimraf dist/*",
-    "copy": "node_modules/.bin/copyfiles -f ./src/{index.html,library.html} ./src/favicon.ico ./dist",
-    "copy:lib": "node_modules/.bin/copyfiles -f ./node_modules/react/dist/react.js ./node_modules/react-dom/dist/react-dom.js ./node_modules/babel-standalone/babel.js ./dist/lib/",
+    "copy": "node_modules/.bin/copyfiles -f ./src/index.html ./src/favicon.ico ./dist",
+    "copy:lib": "node_modules/.bin/copyfiles -f ./node_modules/react/dist/react.js ./node_modules/react-dom/dist/react-dom.js ./node_modules/babel-standalone/babel.js ./src/library.html ./dist/lib/",
     "dist": "npm run clean & npm run dist:app & npm run dist:lib",
     "dist:app": "npm run copy & node_modules/.bin/webpack --env=dist",
-    "dist:lib": "npm run copy & npm run copy:lib &  node_modules/.bin/webpack --env=lib",
+    "dist:lib": "npm run copy:lib &  node_modules/.bin/webpack --env=lib",
     "lint": "node_modules/.bin/eslint ./src",
     "posttest": "npm run lint",
     "release:major": "npm version major && npm publish && git push --follow-tags",
@@ -18,7 +18,7 @@
     "release:patch": "npm version patch && npm publish && git push --follow-tags",
     "serve": "node server.js --env=dev",
     "serve:dist": "node server.js --env=dist",
-    "serve:lib": "node_modules/.bin/http-server -p 8001 ./dist",
+    "serve:lib": "node_modules/.bin/http-server -p 8001 ./dist/lib",
     "start": "node server.js --env=dev",
     "test": "node_modules/.bin/karma start",
     "test:watch": "node_modules/.bin/karma start --autoWatch=true --singleRun=false"
