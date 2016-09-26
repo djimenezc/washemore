@@ -20,6 +20,7 @@ let config = Object.assign({}, baseConfig, {
   cache: false,
   devtool: 'sourcemap',
   plugins: [
+    new webpack.IgnorePlugin(/^(index.js)$/),
     new webpack.optimize.DedupePlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
@@ -27,7 +28,7 @@ let config = Object.assign({}, baseConfig, {
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     }),
-    // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin()
@@ -40,7 +41,7 @@ let config = Object.assign({}, baseConfig, {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
-  exclude: /(node_modules|bower_components)/,
+  exclude: /(node_modules|bower_components|index.js)/,
   externals: {
     'react': {
       root: 'React',
