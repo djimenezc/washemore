@@ -16,7 +16,7 @@ const rootDir = `${__dirname}/..`;
 const libDir = `${rootDir}/dist/lib`;
 
 let config = Object.assign({}, baseConfig, {
-  entry: path.join(__dirname, '../src/index'),
+  entry: path.join(__dirname, '../src/lib'),
   cache: false,
   devtool: 'sourcemap',
   plugins: [
@@ -27,7 +27,7 @@ let config = Object.assign({}, baseConfig, {
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     }),
-    // new webpack.optimize.UglifyJsPlugin({ minimize: true }),
+    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin()
@@ -40,7 +40,7 @@ let config = Object.assign({}, baseConfig, {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
-  exclude: /(node_modules|bower_components)/,
+  exclude: /(node_modules|bower_components|index.js)/,
   externals: {
     'react': {
       root: 'React',
