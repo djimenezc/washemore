@@ -9,9 +9,7 @@ import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
 import Main from 'components/Main';
-// const leche = require ('leche');
-
-// const withData = leche.withData;
+import {given} from 'mocha-testdata';
 
 describe('MainComponent', () => {
   let MainComponent;
@@ -24,16 +22,19 @@ describe('MainComponent', () => {
     expect(MainComponent.props.className).to.equal('index');
   });
 
+  given(
+    'david',
+    'angel',
+    'luis',
+    'dani'
+  )
+    .it('should render the component', (name) => {
 
-  it('should render the component', () => {
+      const component = TestUtils.renderIntoDocument(
+        <Main name={name}/>
+      );
+      const domComponent = ReactDom.findDOMNode(component);
 
-    const name = 'david';
-
-    const component = TestUtils.renderIntoDocument(
-      <Main name={name}/>
-    );
-    const domComponent = ReactDom.findDOMNode(component);
-
-    expect(domComponent.textContent).to.equal(`Hello ${name}`);
-  });
+      expect(domComponent.textContent).to.equal(`Hello ${name}`);
+    });
 });
