@@ -6,4 +6,4 @@ import App from './components/Main';
 console.log('Starting App');
 
 // Render the main component into the dom
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<App name={'david'}/>, document.getElementById('app'));
