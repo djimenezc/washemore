@@ -9,12 +9,14 @@ let baseConfig = require('./base');
 let BowerWebpackPlugin = require('bower-webpack-plugin');
 
 module.exports = {
-  devtool: 'eval',
+  // devtool: 'eval-source-map', // uncomment to debug app code
+  // devtool: 'eval',
   module: {
     preLoaders: [
       {
         test: /\.(js|jsx)$/,
         loader: 'isparta-instrumenter-loader',
+        // loader: 'babel', //uncomment to debug app code
         include: [
           path.join(__dirname, '/../src')
         ]
@@ -39,7 +41,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [ '', '.js', '.jsx' ],
+    extensions: ['', '.js', '.jsx'],
     alias: {
       actions: srcPath + 'actions/',
       helpers: path.join(__dirname, '/../test/helpers'),
