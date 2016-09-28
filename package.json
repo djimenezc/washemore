@@ -21,7 +21,9 @@
     "serve:lib": "node_modules/.bin/http-server -p 8001 ./dist/lib",
     "start": "node server.js --env=dev",
     "test": "node_modules/.bin/karma start",
-    "test:watch": "node_modules/.bin/karma start --autoWatch=true --singleRun=false"
+    "test:watch": "node_modules/.bin/karma start --autoWatch=true --singleRun=false",
+    "deps": "npm install --quiet --loglevel warn && ./node_modules/.bin/selenium-standalone install && mkdir ./build/",
+    "selenium": "./node_modules/.bin/nightwatch -e chrome"
   },
   "repository": {
     "type": "git",
@@ -74,12 +76,14 @@
     "minimist": "^1.2.0",
     "mocha": "^3.0.0",
     "mocha-testdata": "^1.2.0",
+    "nightwatch": "^0.9.8",
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.0.0",
     "react-addons-test-utils": "^15.2.1",
     "react-hot-loader": "^1.2.9",
     "rimraf": "^2.4.3",
+    "selenium-standalone": "^5.7.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
     "webpack": "^1.12.0",

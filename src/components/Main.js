@@ -16,7 +16,7 @@ class AppComponent extends React.Component {
     return (
       <div className="index">
         <img src={yeomanImage} alt="Yeoman Generator" />
-        <div className="notice">{AppComponent.sayHello(this.props.name)}</div>
+        <h1 className="notice">{AppComponent.sayHello(this.props.name)}</h1>
       </div>
     );
   }
