@@ -8,5 +8,27 @@
   input {
     width: 20em;
   }
+
+  .hamburger-wrapper {
+    fill: currentcolor;
+    vertical-align: -0.15em;
+    width: 1em;
+    height: 1em;
+  }
+
+  .menu-wrapper {
+    display: flex;
+    align-items: center;
+    > div {
+      margin-right: 0.5em;
+    }
+  }
+
+  .search-input-wrapper {
+    display: inline;
+  }
 }
 
+.float-right {
+  float: right;
+}

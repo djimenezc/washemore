@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
     const placeholder = _.get(this, 'props.placeHolder');
 
     return (
-      <form >
+      <form className="search-input-wrapper">
         <input type="text" name="search" placeholder={placeholder}/>
       </form>
     );
