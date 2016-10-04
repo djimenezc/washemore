@@ -1,11 +1,12 @@
 import React from 'react';
-import _ from 'lodash';
 
 class SearchBar extends React.Component {
 
   render() {
 
-    const placeholder = _.get(this, 'props.placeHolder');
+    const {placeholder} = this.props;
+
+    console.log(`placeholder ${placeholder}`);
 
     return (
       <form className="search-input-wrapper">

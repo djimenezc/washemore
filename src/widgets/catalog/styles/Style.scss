@@ -26,6 +26,9 @@
 
   .search-input-wrapper {
     display: inline;
+    input {
+      text-align: center;
+    }
   }
 }
 

@@ -13,7 +13,7 @@ class Header extends React.Component {
     return (
       <header className="catalog-header">
         <div className="header-title">{title}</div>
-        <SearchBar/>
+        <SearchBar placeholder="SEARCH"/>
         <Menu className="float-right"/>
       </header>
     );
