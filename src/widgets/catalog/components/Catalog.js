@@ -3,14 +3,15 @@ import React from 'react';
 import CatalogHeader from './Header'
 import CatalogMain from './Main'
 import CatalogFooter from './Footer'
+import {labels}from '../constants'
 
-class CatalogComponent extends React.Component {
+class Catalog extends React.Component {
 
   render() {
 
     return (
       <div id="root">
-        <CatalogHeader/>
+        <CatalogHeader title={labels.TITLE}/>
         <CatalogMain>
 
         </CatalogMain>
@@ -21,6 +22,6 @@ class CatalogComponent extends React.Component {
 }
 
 
-CatalogComponent.defaultProps = {};
+Catalog.defaultProps = {};
 
-export default CatalogComponent;
+export default Catalog;

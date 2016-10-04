@@ -1,17 +1,20 @@
 import React from 'react';
 
-class CatalogComponent extends React.Component {
+class Header extends React.Component {
 
   render() {
 
+    const {title} = this.props;
+
     return (
       <header className="catalog-main">
+        {title}
       </header>
     );
   }
 }
 
 
-CatalogComponent.defaultProps = {};
+Header.defaultProps = {};
 
-export default CatalogComponent;
+export default Header;

@@ -1,3 +1,5 @@
-import Catalog from './Catalog';
+import CatalogInner from './Catalog';
 
-export default { Catalog };
+export {CatalogInner as Catalog};
+
+export default {CatalogInner};
