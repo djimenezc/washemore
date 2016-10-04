@@ -90,6 +90,7 @@
     "phantomjs-prebuilt": "^2.0.0",
     "react-addons-test-utils": "^15.2.1",
     "react-hot-loader": "^1.2.9",
+    "redux-devtools": "^3.3.1",
     "rimraf": "^2.4.3",
     "sass-loader": "^4.0.2",
     "selenium-standalone": "^5.7.2",
@@ -106,7 +107,10 @@
     "normalize.css": "^4.0.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "redux": "^3.6.0"
+    "react-redux": "^4.4.5",
+    "react-router-redux": "^4.0.6",
+    "redux": "^3.6.0",
+    "redux-undo": "^0.6.1"
   },
   "contributors": [
     "Alberto Arteaga alberto.arteaga@logtrust.com",

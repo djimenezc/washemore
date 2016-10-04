@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from './SearchBar';
-import Menu from './Menu';
+import SearchBar from '../components/SearchBar';
+import Menu from '../components/Menu';
 
 require('../styles/Style.scss');
 

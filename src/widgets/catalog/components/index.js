@@ -1,5 +1,7 @@
-import CatalogInner from './Catalog';
+import Menu from './Menu';
+import SearchBar from './SearchBar';
 
-export {CatalogInner as Catalog};
-
-export default {CatalogInner};
+export default {
+  Menu,
+  SearchBar
+};
