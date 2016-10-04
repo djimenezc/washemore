@@ -4,8 +4,6 @@ import ReactDOM from 'react-dom';
 // import App from './components/Main';
 import {Catalog} from './widgets/catalog';
 
-// const {Catalog} = components;
-
 console.log('Starting App');
 
 // Render the main component into the dom

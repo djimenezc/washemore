@@ -1,4 +1,7 @@
 import React from 'react';
+import SearchBar from './SearchBar';
+
+require('../styles/Style.scss');
 
 class Header extends React.Component {
 
@@ -7,8 +10,9 @@ class Header extends React.Component {
     const {title} = this.props;
 
     return (
-      <header className="catalog-main">
-        {title}
+      <header className="catalog-header">
+        <div className="header-title">{title}</div>
+        <SearchBar/>
       </header>
     );
   }

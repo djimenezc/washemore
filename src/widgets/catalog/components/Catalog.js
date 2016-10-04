@@ -11,7 +11,7 @@ class Catalog extends React.Component {
 
     return (
       <div id="root">
-        <CatalogHeader title={labels.TITLE}/>
+        <CatalogHeader title={labels.TITLE} placeHolder={labels.PLACEHOLDER}/>
         <CatalogMain>
 
         </CatalogMain>

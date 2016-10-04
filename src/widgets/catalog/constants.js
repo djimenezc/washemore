@@ -3,7 +3,8 @@ export const settings = {
 };
 
 export const labels = {
-  TITLE: 'Washemo 2.0'
+  TITLE: 'Washemo 2.0',
+  PLACEHOLDER: 'Search'
 };
 
 export default {
