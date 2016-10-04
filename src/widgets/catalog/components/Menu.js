@@ -23,7 +23,6 @@ class Menu extends React.Component {
   }
 }
 
-
 Menu.defaultProps = {};
 
 export default Menu;

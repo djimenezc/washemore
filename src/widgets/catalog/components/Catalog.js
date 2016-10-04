@@ -10,7 +10,7 @@ class Catalog extends React.Component {
   render() {
 
     return (
-      <div id="root">
+      <div className="catalog">
         <CatalogHeader title={labels.TITLE} placeHolder={labels.PLACEHOLDER}/>
         <CatalogMain>
 
@@ -20,7 +20,6 @@ class Catalog extends React.Component {
     );
   }
 }
-
 
 Catalog.defaultProps = {};
 

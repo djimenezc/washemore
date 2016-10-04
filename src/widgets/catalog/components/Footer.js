@@ -5,12 +5,12 @@ class Footer extends React.Component {
   render() {
 
     return (
-      <footer className="catalog-header">
+      <footer className="footer">
+        Logtrust footer
       </footer>
     );
   }
 }
-
 
 Footer.defaultProps = {};
 

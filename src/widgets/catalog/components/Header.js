@@ -11,7 +11,7 @@ class Header extends React.Component {
     const {title} = this.props;
 
     return (
-      <header className="catalog-header">
+      <header className="header">
         <div className="header-title">{title}</div>
         <SearchBar placeholder="SEARCH"/>
         <Menu className="float-right"/>
@@ -19,7 +19,6 @@ class Header extends React.Component {
     );
   }
 }
-
 
 Header.defaultProps = {};
 

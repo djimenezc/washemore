@@ -1,37 +1,44 @@
 
-.catalog-header {
-  text-align: center;
-  .header-title {
-    float: left
-  }
-
-  input {
-    width: 20em;
-  }
-
-  .hamburger-wrapper {
-    fill: currentcolor;
-    vertical-align: -0.15em;
-    width: 1em;
-    height: 1em;
-  }
-
-  .menu-wrapper {
-    display: flex;
-    align-items: center;
-    > div {
-      margin-right: 0.5em;
+.catalog {
+  .header {
+    text-align: center;
+    .header-title {
+      float: left
     }
-  }
 
-  .search-input-wrapper {
-    display: inline;
     input {
-      text-align: center;
+      width: 20em;
     }
+
+    .hamburger-wrapper {
+      fill: currentcolor;
+      vertical-align: -0.15em;
+      width: 1em;
+      height: 1em;
+    }
+
+    .menu-wrapper {
+      display: flex;
+      align-items: center;
+      > div {
+        margin-right: 0.5em;
+      }
+    }
+
+    .search-input-wrapper {
+      display: inline;
+      input {
+        text-align: center;
+      }
+    }
+  }
+
+  .float-right {
+    float: right;
+  }
+
+  .footer, .main-content, .header {
+    padding: 1em;
   }
 }
 
-.float-right {
-  float: right;
-}
