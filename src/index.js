@@ -4,10 +4,23 @@ import ReactDOM from 'react-dom';
 // import App from './components/Main';
 import {Catalog, reducers} from './widgets/catalog';
 
-import {createStore} from 'redux'
+import {applyMiddleware, createStore} from 'redux'
 import {Provider} from 'react-redux'
 
-const store = createStore(reducers);
+const logger = () => (next) => (action) => {
+  console.log('action');
+};
+
+const middleware = applyMiddleware();
+
+const store = createStore(reducers, 1, middleware);
+
+// store.subscribe(() => {
+//   console.log('store changed', store.getState());
+// });
+
+store.dispatch({type: 'CHANGE_NAME', payload: 'david'});
+store.dispatch({type: 'CHANGE_NAME', payload: 'angel'});
 
 console.log('Starting App');
 
