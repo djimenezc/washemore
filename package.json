@@ -84,24 +84,29 @@
     "mocha": "^3.0.0",
     "mocha-testdata": "^1.2.0",
     "nightwatch": "^0.9.8",
+    "node-sass": "^3.10.1",
     "null-loader": "^0.1.1",
     "open": "0.0.5",
     "phantomjs-prebuilt": "^2.0.0",
     "react-addons-test-utils": "^15.2.1",
     "react-hot-loader": "^1.2.9",
     "rimraf": "^2.4.3",
+    "sass-loader": "^4.0.2",
     "selenium-standalone": "^5.7.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.6",
-    "webpack": "^1.12.0",
+    "webpack": "^1.13.2",
     "webpack-dev-server": "^1.12.0",
     "winston": "^2.2.0"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "core-js": "^2.0.0",
+    "lodash": "^4.16.3",
     "normalize.css": "^4.0.0",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "redux": "^3.6.0"
   },
   "contributors": [
     "Alberto Arteaga alberto.arteaga@logtrust.com",
