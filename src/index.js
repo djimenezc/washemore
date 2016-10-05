@@ -13,7 +13,10 @@ import {Provider} from 'react-redux'
 
 const middleware = applyMiddleware(thunk, logger());
 
-const initialState = [];
+const initialState = {
+  componentList: [],
+  reducer: {}
+};
 
 //noinspection JSCheckFunctionSignatures
 const store = createStore(reducers, initialState, middleware);
@@ -22,8 +25,11 @@ const store = createStore(reducers, initialState, middleware);
 store.dispatch((dispatch) => {
   dispatch({type: 'FETCH_USER_START'});
   //do something async
-
-  dispatch({type: 'FETCH_USER_FINISH'})
+  fetch('http://rest.learncode.academy/api/wstern/users')
+    .then((response) => dispatch({type: 'RECEIVE_USER', payload: response.data}))
+    .catch((err) => {
+      dispatch(({type: 'FETCH_USER_ERROR', payload: err}))
+    });
 });
 
 console.log('Starting App');
