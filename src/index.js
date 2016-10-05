@@ -2,28 +2,29 @@ import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './components/Main';
+//noinspection JSUnresolvedVariable,ES6UnusedImports
 import {Catalog, reducers} from './widgets/catalog';
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import {applyMiddleware, createStore} from 'redux'
+//noinspection JSUnresolvedVariable
 import {Provider} from 'react-redux'
 
-const logger = () => (next) => (action) => {
-  console.log('action fired', action.type, action.payload);
-  next(action);
-};
+const middleware = applyMiddleware(thunk, logger());
 
-const middleware = applyMiddleware(logger);
+const initialState = [];
 
-const initialState = {};
-
+//noinspection JSCheckFunctionSignatures
 const store = createStore(reducers, initialState, middleware);
 
-store.subscribe(() => {
-  console.log('store changed', store.getState());
-});
 
-store.dispatch({type: 'CHANGE_NAME', payload: 'david'});
-store.dispatch({type: 'CHANGE_NAME', payload: 'angel'});
+store.dispatch((dispatch) => {
+  dispatch({type: 'FETCH_USER_START'});
+  //do something async
+
+  dispatch({type: 'FETCH_USER_FINISH'})
+});
 
 console.log('Starting App');
 
