@@ -6,12 +6,13 @@ import ReactDOM from 'react-dom';
 import {Catalog, reducers, actionTypes} from './widgets/catalog';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import promise from 'redux-promise-middleware';
 
 import {applyMiddleware, createStore} from 'redux'
 //noinspection JSUnresolvedVariable
 import {Provider} from 'react-redux'
 
-const middleware = applyMiddleware(thunk, logger());
+const middleware = applyMiddleware(promise(), thunk, logger());
 
 const initialState = {
   componentList: [],
@@ -23,18 +24,9 @@ const initialState = {
 const store = createStore(reducers, initialState, middleware);
 
 
-store.dispatch((dispatch) => {
-  dispatch({type: actionTypes.FETCH_USERS_PENDING});
-  //do something async
-  fetch('https://rest.learncode.academy/api/wstern/users')
-    .then((response) => dispatch({
-      type: actionTypes.FETCH_USERS_RECEIVE, payload: response.data
-    }))
-    .catch((err) => {
-      dispatch(({
-        type: actionTypes.FETCH_USERS_ERROR, payload: err
-      }))
-    });
+store.dispatch({
+  type: actionTypes.FETCH_USERS,
+  payload: fetch('http://rest.learncode.academy/api/wstern/users')
 });
 
 console.log('Starting App');
