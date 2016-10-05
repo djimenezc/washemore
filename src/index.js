@@ -1,33 +1,12 @@
-import 'core-js/fn/object/assign';
-import React from 'react';
-import ReactDOM from 'react-dom';
-// import App from './components/Main';
-//noinspection JSUnresolvedVariable,ES6UnusedImports
-import {Catalog, reducers, actionTypes} from './widgets/catalog';
-import logger from 'redux-logger';
-import thunk from 'redux-thunk';
-import promise from 'redux-promise-middleware';
-
-import {applyMiddleware, createStore} from 'redux'
+import 'core-js/fn/object/assign'
+import React from 'react'
+import ReactDOM from 'react-dom'
 //noinspection JSUnresolvedVariable
 import {Provider} from 'react-redux'
-
-const middleware = applyMiddleware(promise(), thunk, logger());
-
-const initialState = {
-  componentList: [],
-  reducer: {},
-  userReducer: {}
-};
-
-//noinspection JSCheckFunctionSignatures
-const store = createStore(reducers, initialState, middleware);
-
-
-store.dispatch({
-  type: actionTypes.FETCH_USERS,
-  payload: fetch('http://rest.learncode.academy/api/wstern/users')
-});
+// import App from './components/Main';
+//noinspection JSUnresolvedVariable,ES6UnusedImports
+import {Catalog} from './widgets/catalog'
+import store from './store'
 
 console.log('Starting App');
 

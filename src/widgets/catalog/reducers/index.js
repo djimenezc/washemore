@@ -1,12 +1,12 @@
 import {combineReducers} from 'redux'
 import reducer from './reducer'
 import componentList from './componentListReducer'
-import userReducer from './usersReducer'
+import user from './users'
 
 const reducers = combineReducers({
   componentList,
   reducer,
-  userReducer
+  user
 });
 
 export default reducers;
