@@ -1,1 +1,3 @@
-export const ADD = 'todos/ADD';
+export const FETCH_USERS_PENDING = 'FETCH_USER_PENDING';
+export const FETCH_USERS_RECEIVE = 'FETCH_USERS_RECEIVE';
+export const FETCH_USERS_ERROR = 'FETCH_USERS_ERROR';

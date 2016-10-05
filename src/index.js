@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 // import App from './components/Main';
 //noinspection JSUnresolvedVariable,ES6UnusedImports
-import {Catalog, reducers} from './widgets/catalog';
+import {Catalog, reducers, actionTypes} from './widgets/catalog';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
@@ -15,7 +15,8 @@ const middleware = applyMiddleware(thunk, logger());
 
 const initialState = {
   componentList: [],
-  reducer: {}
+  reducer: {},
+  userReducer: {}
 };
 
 //noinspection JSCheckFunctionSignatures
@@ -23,12 +24,16 @@ const store = createStore(reducers, initialState, middleware);
 
 
 store.dispatch((dispatch) => {
-  dispatch({type: 'FETCH_USER_START'});
+  dispatch({type: actionTypes.FETCH_USERS_PENDING});
   //do something async
-  fetch('http://rest.learncode.academy/api/wstern/users')
-    .then((response) => dispatch({type: 'RECEIVE_USER', payload: response.data}))
+  fetch('https://rest.learncode.academy/api/wstern/users')
+    .then((response) => dispatch({
+      type: actionTypes.FETCH_USERS_RECEIVE, payload: response.data
+    }))
     .catch((err) => {
-      dispatch(({type: 'FETCH_USER_ERROR', payload: err}))
+      dispatch(({
+        type: actionTypes.FETCH_USERS_ERROR, payload: err
+      }))
     });
 });
 
