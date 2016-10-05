@@ -18,23 +18,24 @@ import {user} from '../actions'
 export default class Catalog extends React.Component {
 
   componentWillMount() {
-    //   this.props.dispatch({
-    // type: actionTypes.FETCH_USERS,
-    //     payload: fetch('http://rest.learncode.academy/api/wstern/users')
-    //   });
-
-    this.props.dispatch(user.fetchUser())
+    this.props.dispatch(user.fetchUser1());
   }
 
   render() {
 
-    console.log('hello ', this.props.user);
+    const {user} = this.props;
+
+    console.log('hello ', user);
+
     return (
       <div className="catalog">
         <CatalogHeader title={labels.TITLE} placeHolder={labels.PLACEHOLDER}/>
         <CatalogMain>
-
+          <div>
+            <h1>{user.name}</h1>
+          </div>
         </CatalogMain>
+
         <CatalogFooter/>
       </div>
     );

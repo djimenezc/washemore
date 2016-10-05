@@ -29,7 +29,7 @@ export default (state = {
       ...state,
       fetching: false,
       fetched: true,
-      user: action.payload
+      user: action.payload[0]
     };
     break;
   }

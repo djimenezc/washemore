@@ -9,11 +9,5 @@ import {applyMiddleware, createStore} from 'redux'
 
 const middleware = applyMiddleware(promise(), thunk, logger());
 
-const initialState = {
-  componentList: [],
-  reducer: {},
-  user: {}
-};
-
 //noinspection JSCheckFunctionSignatures
-export default createStore(reducers, initialState, middleware);
+export default createStore(reducers, middleware);
