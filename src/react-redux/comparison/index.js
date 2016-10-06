@@ -3,7 +3,8 @@ import store from './store'
 import {MyComponent} from './components'
 
 export default {
-  Comparison: MyComponent,
+  ComparisonReact: MyComponent,
+  ComparisonRedux: MyComponent,
   store
 }
 
