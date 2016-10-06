@@ -1,11 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-class Menu extends React.Component {
+export default (props) => {
 
-  render() {
-
-    const {className} = this.props;
+  const {className} = props;
     const classNamesList = classNames(className, 'menu-wrapper');
 
     //noinspection CheckTagEmptyBody
@@ -20,9 +18,4 @@ class Menu extends React.Component {
         </svg>
       </div>
     );
-  }
-}
-
-Menu.defaultProps = {};
-
-export default Menu;
+};
