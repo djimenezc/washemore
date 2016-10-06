@@ -1,5 +1,7 @@
 import MyComponent from './MyComponent';
+import MyComponentContainer from './MyComponentContainer';
 
 export default {
-  MyComponent
+  MyComponent,
+  MyComponentContainer
 };
