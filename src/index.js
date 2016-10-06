@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 //noinspection JSUnresolvedVariable
 import {Provider} from 'react-redux'
-// import App from './components/Main';
+import App from './widgets/main/components/Main';
 //noinspection JSUnresolvedVariable,ES6UnusedImports
 import {Catalog, store} from './widgets/catalog'
 
@@ -13,8 +13,9 @@ console.log('Starting App');
 ReactDOM.render(
   <div>
     <Provider store={store}>
-      {/*<App name={'david'}/>*/}
-      <Catalog/>
+      <Catalog>
+        <App name={'david'}/>
+      </Catalog>
     </Provider>
   </div>,
   document.getElementById('app'));
