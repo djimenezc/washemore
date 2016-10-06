@@ -13,13 +13,10 @@ export default (state = {
 
   switch (action.type) {
 
-  case actionTypes.FETCH_USERS: {
-    return {...state, fetching: true}
+  case actionTypes.FETCH_USERS_PENDING : {
+    state = {...state, fetching: true};
+    break;
   }
-    // case actionTypes.FETCH_USERS_PENDING : {
-    //   state = {...state, name: action.payload, fetching: true};
-    //   break;
-    // }
   case actionTypes.FETCH_USERS_ERROR : {
     state = {...state, error: action.payload, fetching: false};
     break;
