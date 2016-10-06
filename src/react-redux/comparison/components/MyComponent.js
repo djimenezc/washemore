@@ -8,15 +8,26 @@ class MyComponent extends React.Component {
     this.state = props;
   }
 
-  componentWillMount() {
+  changeName(event) {
+
+    this.setState({name: event.target.value});
+  }
+
+  changeNumberLevels(event) {
+
+    this.setState({nLevels: event.target.value});
+  }
+
+  changeNumberNodes(event) {
+
+    this.setState({nNodes: event.target.value});
   }
 
   render() {
 
     console.log('rendering');
 
-    const name = 'hello';
-    var createChildren = function (node) {
+    var createChildren = (node) => {
       if (node) {
         const children = node.nodes ?
           <ul>
@@ -24,11 +35,10 @@ class MyComponent extends React.Component {
           </ul> : [];
 
         return <li key={node.id}>
-          {node.name}
+          {node.name} - {this.state.name}
           {children}
         </li>
       }
-      // return null;
     };
 
     const nodeLines = this.state.nodes ?
@@ -38,13 +48,21 @@ class MyComponent extends React.Component {
       : [];
 
     console.log('created children li');
-    debugger;
 
     return (
       <div>
-        Hello world {name}
+        Hello world {this.state.name} - {this.state.nNodes}
+        - {this.state.nLevels}
         <div>
-          <input name="filter" type="input"/>
+          Name: <input name="filter" type="text" value={this.state.name}
+                       onChange={this.changeName.bind(this)}/>
+          <br/>
+          nNodes: <input name="filter" type="text" value={this.state.nNodes}
+                         onChange={this.changeNumberNodes.bind(this)}/>
+          <br/>
+          nLevels: <input name="filter" type="text" value={this.state.nLevels}
+                          onChange={this.changeNumberLevels.bind(this)}/>
+          <br/>
           {nodeLines}
         </div>
       </div>

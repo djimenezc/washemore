@@ -4,43 +4,31 @@ import ReactDOM from 'react-dom'
 //noinspection JSUnresolvedVariable
 import {Provider} from 'react-redux'
 import {ComparisonReact, ComparisonRedux, store} from './react-redux/comparison'
-import _ from 'lodash'
+import createNodeTree from './createNodeTree'
 
 console.log('Starting App');
 
-const nNodes = 50;
-const nLevels = 3;
-
-const createNodeTree = (level, nNodes) => {
-
-  // const nodes = [];
-  // debugger;
-  if (level > 0) {
-    return _.times(nNodes, function (index) {
-      // debugger;
-
-      return {
-        name: _.random(1, nNodes),
-        id: `${level}-${index}`,
-        nodes: createNodeTree(level - 1, nNodes)
-      };
-    })
-      .filter((item) => item);
-  }
-};
-
-const nodes = createNodeTree(nLevels, nNodes);
-// debugger;
+const nNodes = 30;
+const nLevels = 2;
 
 console.log(`We have ${nNodes} children`);
+
+const name = 'david';
+
+const nodes = createNodeTree(nLevels, nNodes);
 
 // Render the main component into the dom
 ReactDOM.render(
   <div>
     <Provider store={store}>
-      <ComparisonRedux name={'david'}/>
+      <ComparisonRedux name={name}/>
     </Provider>
 
-    <ComparisonReact name={'david'} nodes={nodes}/>
+    <p>I am {name} at the index.js</p>
+    <ComparisonReact name={name}
+                     nodes={nodes}
+                     nNodes={nNodes}
+                     nLevels={nLevels}
+    />
   </div>,
   document.getElementById('app'));
