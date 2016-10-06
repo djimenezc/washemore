@@ -1,21 +1,14 @@
 import React from 'react';
 
-class SearchBar extends React.Component {
+export default (props) => {
 
-  render() {
+  const {placeholder} = props;
 
-    const {placeholder} = this.props;
+  console.log(`placeholder ${placeholder}`);
 
-    console.log(`placeholder ${placeholder}`);
-
-    return (
-      <form className="search-input-wrapper">
-        <input type="text" name="search" placeholder={placeholder}/>
-      </form>
-    );
-  }
-}
-
-SearchBar.defaultProps = {};
-
-export default SearchBar;
+  return (
+    <form className="search-input-wrapper">
+      <input type="text" name="search" placeholder={placeholder}/>
+    </form>
+  );
+};

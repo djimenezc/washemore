@@ -1,7 +1,19 @@
 import * as actions from './actions';
-import components, {Catalog} from './components';
+import components from './components';
+import Catalog from './containers';
 import * as constants from './constants';
-import * as reducers from './reducers';
+import reducers from './reducers';
 import * as selectors from './selectors';
+import * as actionTypes from './actionTypes';
+import store from './store';
 
-export default {actions, components, Catalog, constants, reducers, selectors};
+export default {
+  actions,
+  actionTypes,
+  components,
+  Catalog,
+  constants,
+  reducers,
+  selectors,
+  store
+};

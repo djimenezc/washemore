@@ -4,6 +4,7 @@ let path = require('path');
 let webpack = require('webpack');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
+let defaultPlugins = defaultSettings.getDefaultPlugins();
 
 // Add needed plugins here
 let BowerWebpackPlugin = require('bower-webpack-plugin');
@@ -17,11 +18,12 @@ let config = Object.assign({}, baseConfig, {
   cache: true,
   devtool: 'eval-source-map',
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-    new BowerWebpackPlugin({
-      searchResolveModulesDirectories: false
-    })
+    ...defaultPlugins,
+    ...[new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoErrorsPlugin(),
+      new BowerWebpackPlugin({
+        searchResolveModulesDirectories: false
+      })]
   ],
   module: defaultSettings.getDefaultModules()
 });
@@ -32,7 +34,7 @@ config.module.loaders.push({
   loader: 'react-hot!babel-loader',
   include: [].concat(
     config.additionalPaths,
-    [ path.join(__dirname, '/../src') ]
+    [path.join(__dirname, '/../src')]
   )
 });
 

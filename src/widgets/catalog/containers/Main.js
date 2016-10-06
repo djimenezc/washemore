@@ -6,7 +6,7 @@ class Main extends React.Component {
 
     return (
       <div className="main-content">
-        Main Component
+        {this.props.children}
       </div>
     );
   }

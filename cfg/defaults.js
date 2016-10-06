@@ -11,6 +11,21 @@ const srcPath = path.join(__dirname, '/../src');
 const dfltPort = 8000;
 const publicPath = '/assets/';
 
+let webpack = require('webpack');
+
+/**
+ * Get the default plugin object for webpack
+ * @return {Object}
+ */
+function getDefaultPlugins() {
+  return [
+    new webpack.ProvidePlugin({
+      Promise: 'imports?this=>global!exports?global.Promise!es6-promise',
+      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+    })
+  ]
+}
+
 /**
  * Get the default modules object for webpack
  * @return {Object}
@@ -62,6 +77,7 @@ module.exports = {
   publicPath: publicPath,
   port: dfltPort,
   getDefaultModules: getDefaultModules,
+  getDefaultPlugins: getDefaultPlugins,
   pageToOpen: 'index.html',
   devServer: {
     contentBase: './src/',

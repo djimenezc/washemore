@@ -4,13 +4,15 @@ let path = require('path');
 let srcPath = path.join(__dirname, '/../src/');
 
 let baseConfig = require('./base');
+let defaultSettings = require('./defaults');
+let defaultPlugins = defaultSettings.getDefaultPlugins();
 
 // Add needed plugins here
 let BowerWebpackPlugin = require('bower-webpack-plugin');
 
 module.exports = {
   // devtool: 'eval-source-map', // uncomment to debug app code
-  // devtool: 'eval',
+  devtool: 'eval',
   module: {
     preLoaders: [
       {
@@ -53,8 +55,10 @@ module.exports = {
     }
   },
   plugins: [
-    new BowerWebpackPlugin({
+    ...defaultPlugins,
+    ...[new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     })
+    ]
   ]
 };
