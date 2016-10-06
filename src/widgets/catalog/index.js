@@ -5,6 +5,7 @@ import * as constants from './constants';
 import reducers from './reducers';
 import * as selectors from './selectors';
 import * as actionTypes from './actionTypes';
+import store from './store';
 
 export default {
   actions,
@@ -13,5 +14,6 @@ export default {
   Catalog,
   constants,
   reducers,
-  selectors
+  selectors,
+  store
 };

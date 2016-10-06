@@ -5,8 +5,7 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 // import App from './components/Main';
 //noinspection JSUnresolvedVariable,ES6UnusedImports
-import {Catalog} from './widgets/catalog'
-import store from './store'
+import {Catalog, store} from './widgets/catalog'
 
 console.log('Starting App');
 
