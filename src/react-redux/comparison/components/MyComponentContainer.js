@@ -9,13 +9,17 @@ class MyComponentContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.changeGrid();
+    this.changeGrid(this.state.nLevels, this.state.nNodes);
   }
 
-  changeGrid() {
+  changeGrid(nLevels, nNodes) {
 
+    debugger;
+    console.log(`changeGrid ${nLevels} ${nNodes}`);
     this.setState({
-      nodes: this.state.createNodeTree(this.state.nLevels, this.state.nNodes)
+      nodes: this.state.createNodeTree(nLevels, nNodes),
+      nNodes: parseInt(nNodes),
+      nLevels: parseInt(nLevels)
     });
   }
 

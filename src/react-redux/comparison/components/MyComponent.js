@@ -14,17 +14,22 @@ class MyComponent extends React.Component {
   }
 
   changeNumberLevels(event) {
+    var nLevels = event.target.value;
+    var nNodes = this.state.nNodes;
 
-    this.setState({nLevels: event.target.value});
+    this.state.changeGrid(nLevels, nNodes);
   }
 
   changeNumberNodes(event) {
+    var nLevels = this.state.nLevels;
+    var nNodes = event.target.value;
 
-    this.setState({nNodes: event.target.value});
+    this.state.changeGrid(nLevels, nNodes);
   }
 
   render() {
 
+    debugger;
     console.log('rendering');
 
     var createChildren = (node) => {
