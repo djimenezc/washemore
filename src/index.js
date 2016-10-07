@@ -3,7 +3,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 //noinspection JSUnresolvedVariable
 import {Provider} from 'react-redux'
-import {ComparisonRedux, MyComponentContainer, store} from './react-redux/comparison'
+import {store, ComparisonRedux} from './react-redux/comparison'
+import {MyComponentContainer} from './react/comparison'
 import createNodeTree from './createNodeTree'
 
 console.log('Starting App');
@@ -23,6 +24,7 @@ ReactDOM.render(
     </Provider>
 
     <p>I am {name} at the index.js</p>
+
     <MyComponentContainer name={name}
                           createNodeTree={createNodeTree}
                           nNodes={nNodes}

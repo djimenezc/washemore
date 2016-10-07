@@ -1,12 +1,13 @@
-export default (state = {}, action) => {
+const defaults = {};
+
+export default (state = defaults, action) => {
 
   switch (action.type) {
 
     // case actionTypes.FETCH_USERS_PENDING : {
-    //   state = {...state, fetching: true};
+    //   state = {...state, name: action.payload};
     //   break;
     // }
-
   }
 
   return state;

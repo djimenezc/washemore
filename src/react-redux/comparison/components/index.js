@@ -1,7 +1,5 @@
-import MyComponent from './MyComponent';
-import MyComponentContainer from './MyComponentContainer';
+import ComparisonRedux from './Comparison'
 
 export default {
-  MyComponent,
-  MyComponentContainer
+  ComparisonRedux
 };
