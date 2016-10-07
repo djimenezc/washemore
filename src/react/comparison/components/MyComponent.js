@@ -52,8 +52,8 @@ class MyComponent extends React.Component {
 
     return (
       <div>
-        Hello world {this.props.name} - {this.props.nNodes}
-        - {this.props.nLevels}
+        <h2>Hello world {this.props.name} - {this.props.nNodes}
+          - {this.props.nLevels}</h2>
         <div>
           Name: <input name="filter" type="text" value={this.props.name}
                        onChange={ this.changeName.bind(this)}/>
