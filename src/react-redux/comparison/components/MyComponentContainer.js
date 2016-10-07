@@ -14,17 +14,21 @@ class MyComponentContainer extends React.Component {
 
   changeGrid(nLevels, nNodes) {
 
-    debugger;
     console.log(`changeGrid ${nLevels} ${nNodes}`);
+
+    const nodes = nNodes && nLevels
+      ? this.state.createNodeTree(nLevels, nNodes)
+      : this.state.nodes;
+
     this.setState({
-      nodes: this.state.createNodeTree(nLevels, nNodes),
-      nNodes: parseInt(nNodes),
-      nLevels: parseInt(nLevels)
+      nodes: nodes,
+      nNodes: nNodes ? parseInt(nNodes) : '',
+      nLevels: nLevels ? parseInt(nLevels) : ''
     });
   }
 
   render() {
-    debugger;
+
     return (
       <div>
         <ComparisonReact name={this.state.name}

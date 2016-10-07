@@ -5,7 +5,7 @@ class MyComponent extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = props;
+    this.updateStateWithProps(props);
   }
 
   changeName(event) {
@@ -27,10 +27,15 @@ class MyComponent extends React.Component {
     this.state.changeGrid(nLevels, nNodes);
   }
 
+  updateStateWithProps(props) {
+    this.state = props;
+  }
+
   render() {
 
-    debugger;
     console.log('rendering');
+
+    this.updateStateWithProps(this.props);
 
     var createChildren = (node) => {
       if (node) {
