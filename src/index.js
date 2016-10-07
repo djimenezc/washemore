@@ -8,7 +8,8 @@ import {MyComponentContainer} from './react/comparison'
 import createNodeTree from './createNodeTree'
 
 import {Router, Route, hashHistory} from 'react-router'
-import Links from './links'
+import Links from './route/links'
+import NoMatch from './route/NoMatch'
 
 console.log('Starting App');
 
@@ -35,12 +36,15 @@ ReactDOM.render(
           nLevels={nLevels}
         />
       )}/>
-      <Route path="/redux" component={() => (
-        <Provider store={store}>
-          <ComparisonRedux name={name}/>
+      <Route path="/redux" component={(params) => {
+        return <Provider store={store}>
+          <ComparisonRedux name={name}
+                           nNodes={params.location.query.nNodes}
+                           nLevels={params.location.query.nLevels}
+          />
         </Provider>
-      )}/>
-
+      }}/>
+      <Route path="*" component={NoMatch}/>
     </Router>
 
   </div>,
