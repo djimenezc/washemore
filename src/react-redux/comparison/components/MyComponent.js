@@ -4,38 +4,29 @@ class MyComponent extends React.Component {
 
   constructor(props) {
     super(props);
-
-    this.updateStateWithProps(props);
-  }
-
-  changeName(event) {
-
-    this.setState({name: event.target.value});
   }
 
   changeNumberLevels(event) {
     var nLevels = event.target.value;
     var nNodes = this.state.nNodes;
 
-    this.state.changeGrid(nLevels, nNodes);
+    this.props.changeGrid(nLevels, nNodes);
   }
 
   changeNumberNodes(event) {
-    var nLevels = this.state.nLevels;
+    var nLevels = this.props.nLevels;
     var nNodes = event.target.value;
 
-    this.state.changeGrid(nLevels, nNodes);
+    this.props.changeGrid(nLevels, nNodes);
   }
 
-  updateStateWithProps(props) {
-    this.state = props;
+  changeName(event) {
+    this.props.changeName(event.target.value)
   }
 
   render() {
 
     console.log('rendering');
-
-    this.updateStateWithProps(this.props);
 
     var createChildren = (node) => {
       if (node) {
@@ -45,15 +36,15 @@ class MyComponent extends React.Component {
           </ul> : [];
 
         return <li key={node.id}>
-          {node.name} - {this.state.name}
+          {node.name} - {this.props.name}
           {children}
         </li>
       }
     };
 
-    const nodeLines = this.state.nodes ?
+    const nodeLines = this.props.nodes ?
       <ul>
-        {this.state.nodes.map(createChildren)}
+        {this.props.nodes.map(createChildren)}
       </ul>
       : [];
 
@@ -61,16 +52,16 @@ class MyComponent extends React.Component {
 
     return (
       <div>
-        Hello world {this.state.name} - {this.state.nNodes}
-        - {this.state.nLevels}
+        Hello world {this.props.name} - {this.props.nNodes}
+        - {this.props.nLevels}
         <div>
-          Name: <input name="filter" type="text" value={this.state.name}
-                       onChange={this.changeName.bind(this)}/>
+          Name: <input name="filter" type="text" value={this.props.name}
+                       onChange={ this.changeName.bind(this)}/>
           <br/>
-          nNodes: <input name="filter" type="text" value={this.state.nNodes}
+          nNodes: <input name="filter" type="text" value={this.props.nNodes}
                          onChange={this.changeNumberNodes.bind(this)}/>
           <br/>
-          nLevels: <input name="filter" type="text" value={this.state.nLevels}
+          nLevels: <input name="filter" type="text" value={this.props.nLevels}
                           onChange={this.changeNumberLevels.bind(this)}/>
           <br/>
           {nodeLines}

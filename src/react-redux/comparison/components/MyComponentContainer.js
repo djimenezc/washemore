@@ -12,6 +12,12 @@ class MyComponentContainer extends React.Component {
     this.changeGrid(this.state.nLevels, this.state.nNodes);
   }
 
+  changeName(name) {
+    this.setState({
+      name: name
+    });
+  }
+
   changeGrid(nLevels, nNodes) {
 
     console.log(`changeGrid ${nLevels} ${nNodes}`);
@@ -36,6 +42,7 @@ class MyComponentContainer extends React.Component {
                          nNodes={this.state.nNodes}
                          nLevels={this.state.nLevels}
                          changeGrid={this.changeGrid.bind(this)}
+                         changeName={this.changeName.bind(this)}
         />
       </div>
     );
