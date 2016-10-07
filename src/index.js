@@ -7,6 +7,9 @@ import {store, ComparisonRedux} from './react-redux/comparison'
 import {MyComponentContainer} from './react/comparison'
 import createNodeTree from './createNodeTree'
 
+import {Router, Route, hashHistory} from 'react-router'
+import Links from './links'
+
 console.log('Starting App');
 
 const nNodes = 30;
@@ -19,16 +22,28 @@ const name = 'david';
 // Render the main component into the dom
 ReactDOM.render(
   <div>
-    <Provider store={store}>
-      <ComparisonRedux name={name}/>
-    </Provider>
+    <p>I am {name} at the index.js.
+    </p>
 
-    <p>I am {name} at the index.js</p>
+    <Router history={hashHistory}>
+      <Route path="/" component={Links}/>
+      <Route path="/react" component={() => (
+        <MyComponentContainer
+          name={name}
+          createNodeTree={createNodeTree}
+          nNodes={nNodes}
+          nLevels={nLevels}
+        />
+      )}/>
+      <Route path="/redux" component={() => (
+        <Provider store={store}>
+          <ComparisonRedux name={name}/>
+        </Provider>
+      )}/>
 
-    <MyComponentContainer name={name}
-                          createNodeTree={createNodeTree}
-                          nNodes={nNodes}
-                          nLevels={nLevels}
-    />
+    </Router>
+
   </div>,
-  document.getElementById('app'));
+  document.getElementById('app')
+)
+;
