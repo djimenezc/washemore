@@ -2,7 +2,7 @@ import React from 'react'
 import {Provider} from 'react-redux'
 
 //noinspection ES6UnusedImports
-import {store, ComparisonRedux} from '../react-redux/comparison'
+import {store, ComparisonRedux, reduxActions} from '../react-redux/comparison'
 import {MyComponentContainer} from '../react/comparison'
 import {ComparisonFlux} from '../react-flux/comparison'
 
@@ -29,24 +29,24 @@ class Routes extends React.Component {
             </div>
           )}/>
           <Route path="redux" name="Redux" component={(routeInfo) => {
+
+            store.dispatch(reduxActions.changeName(name));
+            store.dispatch(reduxActions.changeNodesNumber(routeInfo.location.query.nNodes));
+            store.dispatch(reduxActions.changeLevelsNumber(routeInfo.location.query.nLevels));
+
             return <Provider store={store}>
               <div>
-                <ComparisonRedux name={name}
-                                 nNodes={routeInfo.location.query.nNodes}
-                                 nLevels={routeInfo.location.query.nLevels}
-                />
+                <ComparisonRedux/>
               </div>
             </Provider>
           }}/>
           <Route path="flux" name="Flux" component={(routeInfo) => {
-            return <Provider store={store}>
-              <div>
-                <ComparisonFlux name={name}
-                                nNodes={routeInfo.location.query.nNodes}
-                                nLevels={routeInfo.location.query.nLevels}
-                />
-              </div>
-            </Provider>
+            return <div>
+              <ComparisonFlux name={name}
+                              nNodes={routeInfo.location.query.nNodes}
+                              nLevels={routeInfo.location.query.nLevels}
+              />
+            </div>
           }}/>
           <Route path="*" name="Route not matched" component={NoMatch}/>
         </Route>

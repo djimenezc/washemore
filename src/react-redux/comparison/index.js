@@ -1,8 +1,10 @@
 import store from './store'
-import {ComparisonRedux} from './components'
+import ComparisonRedux from './containers/Comparison'
+import reduxActions from './actions'
 
 export default {
   store,
-  ComparisonRedux
+  ComparisonRedux,
+  reduxActions
 }
 

@@ -1,8 +1,10 @@
 import {combineReducers} from 'redux'
-import reducer from './reducer'
+import nodes from './nodesReducer'
+import settings from './settingsReducer'
 
 const reducers = combineReducers({
-  reducer
+  nodes,
+  settings
 });
 
 export default reducers;

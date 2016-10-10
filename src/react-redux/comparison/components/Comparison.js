@@ -1,29 +1,57 @@
-require('normalize.css/normalize.css');
+import React, {PropTypes} from 'react';
 
-import React from 'react';
+const NodeList = ({props, changeName, changeNumberNodes, changeNumberLevels}) => {
 
-class AppComponent extends React.Component {
+  console.log('nodelist rendering');
 
-  static sayHello(name = '') {
-    return `Hello ${name} from comparison redux`;
-  }
+  var createChildren = (node) => {
+    if (node) {
+      const children = node.nodes ?
+        <ul>
+          {node.nodes.map(createChildren)}
+        </ul> : [];
 
-  render() {
+      return <li key={node.id}>
+        {node.name} - {this.props.name}
+        {children}
+      </li>
+    }
+  };
 
-    return (
-      <div className="index">
+  const nodeLines = props.nodes ?
+    <ul>
+      {props.nodes.map(createChildren)}
+    </ul>
+    : [];
 
-        <h1 className="notice">{AppComponent.sayHello(this.props.name)}</h1>
-        <div>
-          {/*<ul>route params: {this.props.location.query.nNodes}*/}
-          {/*<li>nNodes: {this.props.location.query.nNodes}</li>*/}
-          {/*</ul>*/}
-        </div>
+  console.log('created children li');
+
+  return (
+    <div>
+      <h2>Hello world {props.name} - {props.nNodes}
+        - {props.nLevels}</h2>
+      <div>
+        <p>Name: <input name="filter" type="text" value={props.name}
+                        onChange={changeName}/>
+        </p>
+        <p>nNodes: <input name="filter" type="text" value={props.nNodes}
+                          onChange={changeNumberNodes}/>
+        </p>
+        <p> nLevels: <input name="filter" type="text"
+                            value={props.nLevels}
+                            onChange={changeNumberLevels}/>
+        </p>
+
+        {nodeLines}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-AppComponent.defaultProps = {};
+NodeList.propTypes = {
+  changeName: PropTypes.func.isRequired,
+  changeNumberNodes: PropTypes.func.isRequired,
+  changeNumberLevels: PropTypes.func.isRequired
+};
 
-export default AppComponent;
+export default NodeList;
