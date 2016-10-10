@@ -42,6 +42,14 @@ export default React.createClass({
               Redux
             </Link>
           </li>
+          <li>
+            <Link to={{
+              pathname: '/flux',
+              query: queryParams
+            }}>
+              Flux
+            </Link>
+          </li>
         </ul>
 
         {this.props.children}

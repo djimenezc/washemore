@@ -13,8 +13,7 @@ const name = 'david';
 // Render the main component into the dom
 ReactDOM.render(
   <div>
-    <p>I am {name} at the index.js.
-    </p>
+    <p>I am {name} at the index.js.</p>
 
     <Routes nNodes={nNodes} nLevels={nLevels} name={name}/>
 

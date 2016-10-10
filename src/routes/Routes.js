@@ -4,6 +4,7 @@ import {Provider} from 'react-redux'
 //noinspection ES6UnusedImports
 import {store, ComparisonRedux} from '../react-redux/comparison'
 import {MyComponentContainer} from '../react/comparison'
+import {ComparisonFlux} from '../react-flux/comparison'
 import createNodeTree from '../createNodeTree'
 
 import {Router, Route, hashHistory} from 'react-router'
@@ -39,7 +40,17 @@ class Routes extends React.Component {
               </div>
             </Provider>
           }}/>
-          <Route path="*" component={NoMatch}/>
+          <Route path="flux" name="Flux" component={(routeInfo) => {
+            return <Provider store={store}>
+              <div>
+                <ComparisonFlux name={name}
+                                nNodes={routeInfo.location.query.nNodes}
+                                nLevels={routeInfo.location.query.nLevels}
+                />
+              </div>
+            </Provider>
+          }}/>
+          <Route path="*" name="Route not matched" component={NoMatch}/>
         </Route>
       </Router>
     );
