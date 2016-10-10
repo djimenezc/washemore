@@ -9,38 +9,50 @@ class TodoStore extends EventEmitter {
     this.nodes = [];
     this.nLevels = 0;
     this.nNodes = 0;
+    this.name = '';
   }
 
-  createTodo(text) {
-    const id = Date.now();
+  setName(name) {
+    this.name = name;
+  }
 
-    this.todos.push({
-      id,
-      text,
-      complete: false
-    });
+  setNodesNumber(nNodes) {
+    this.nNodes = parseInt(nNodes) || 0;
+  }
 
-    this.emit('change');
+  setLevelsNumber(nLevels) {
+    this.nLevels = parseInt(nLevels) || 0;
   }
 
   buildNodes(nNodes, nLevels) {
 
-    this.nNodes = parseInt(nNodes);
-    this.nLevels = parseInt(nLevels);
+    this.setLevelsNumber(nLevels);
+    this.setNodesNumber(nNodes);
     this.nodes = createNodeTree(nLevels, nNodes);
-
-    this.emit('change');
 
     return this.nodes;
   }
 
   handleActions(action) {
     switch (action.type) {
-    case 'CREATE_TODO': {
-      this.createTodo(action.text);
+    case 'CHANGE_NAME': {
+      this.setName(action.name);
+      this.emit('attributeChanged');
       break;
     }
-    case 'RECEIVE_TODOS': {
+    case 'CHANGE_NODES_NUMBER': {
+      this.setNodesNumber(action.nNodes);
+      this.emit('attributeChanged');
+      this.emit('change');
+      break;
+    }
+    case 'CHANGE_LEVELS_NUMBER': {
+      this.setLevelsNumber(action.nLevels);
+      this.emit('attributeChanged');
+      this.emit('change');
+      break;
+    }
+    case 'BUILD_NODES': {
       this.todos = action.todos;
       this.emit('change');
       break;

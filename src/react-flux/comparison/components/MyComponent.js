@@ -1,6 +1,7 @@
 import React from 'react';
 
 import NodeStore from '../stores/NodeStore'
+import * as NodeActions from '../actions/NodeActions'
 
 class MyComponent extends React.Component {
 
@@ -8,33 +9,55 @@ class MyComponent extends React.Component {
     super(props);
 
     this.getNodes = this.getNodes.bind(this);
-    const {nNodes, nLevels} = props;
+    this.attributesChanged = this.attributesChanged.bind(this);
+    const {nNodes, nLevels, name} = props;
+
+    NodeStore.setName(name);
+    this.NodeStore = NodeStore;
+
     this.state = {
-      nodes: NodeStore.buildNodes(nNodes, nLevels)
+      nodes: NodeStore.buildNodes(nNodes, nLevels),
+      name: NodeStore.name,
+      nNodes: NodeStore.nNodes,
+      nLevels: NodeStore.nLevels
     }
   }
 
   changeNumberLevels(event) {
+    NodeActions.setLevelsNumber(event.target.value);
+
   }
 
   changeNumberNodes(event) {
+    NodeActions.setNodesNumber(event.target.value);
   }
 
   changeName(event) {
+    NodeActions.changeName(event.target.value);
   }
 
   getNodes() {
     this.setState({
-      nodes: NodeStore.buildNodes(this.state.nNodes, this.state.nLevels)
+      nNodes: this.NodeStore.nNodes,
+      nLevels: this.NodeStore.nLevels,
+      nodes: NodeStore.buildNodes(this.NodeStore.nNodes, this.NodeStore.nLevels)
     });
+  }
+
+  attributesChanged() {
+    this.setState({
+      name: this.NodeStore.name
+    })
   }
 
   componentWillMount() {
     NodeStore.on('change', this.getNodes);
+    NodeStore.on('attributeChanged', this.attributesChanged);
   }
 
   componentWillUnmount() {
     NodeStore.removeListener('change', this.getNodes);
+    NodeStore.removeListener('attributeChanged', this.attributesChanged);
   }
 
   render() {
@@ -54,7 +77,6 @@ class MyComponent extends React.Component {
         </li>
       }
     };
-    debugger;
 
     const nodeLines = this.state.nodes ?
       <ul>
@@ -66,16 +88,16 @@ class MyComponent extends React.Component {
 
     return (
       <div>
-        <h2>Hello world {this.props.name} - {this.props.nNodes}
-          - {this.props.nLevels}</h2>
+        <h2>Hello world {this.state.name} - {this.state.nNodes}
+          - {this.state.nLevels}</h2>
         <div>
-          Name: <input name="filter" type="text" value={this.props.name}
+          Name: <input name="filter" type="text" value={this.state.name}
                        onChange={ this.changeName.bind(this)}/>
           <br/>
-          nNodes: <input name="filter" type="text" value={this.props.nNodes}
+          nNodes: <input name="filter" type="text" value={this.state.nNodes}
                          onChange={this.changeNumberNodes.bind(this)}/>
           <br/>
-          nLevels: <input name="filter" type="text" value={this.props.nLevels}
+          nLevels: <input name="filter" type="text" value={this.state.nLevels}
                           onChange={this.changeNumberLevels.bind(this)}/>
           <br/>
           {nodeLines}

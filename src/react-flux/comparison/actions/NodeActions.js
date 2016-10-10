@@ -1,11 +1,25 @@
 import dispatcher from '../dispatcher/dispatcher';
 
-export function deleteTodo(id) {
+export function changeName(name) {
+
   dispatcher.dispatch({
-    type: 'DELETE_TODO',
-    id
+    type: 'CHANGE_NAME',
+    name
   });
 }
 
-export function reloadTodos() {
+export function setNodesNumber(nNodes) {
+
+  dispatcher.dispatch({
+    type: 'CHANGE_NODES_NUMBER',
+    nNodes
+  });
+}
+
+export function setLevelsNumber(nLevels) {
+
+  dispatcher.dispatch({
+    type: 'CHANGE_LEVELS_NUMBER',
+    nLevels
+  });
 }
