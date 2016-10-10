@@ -5,4 +5,3 @@ export default {
   ComparisonReact: MyComponent,
   MyComponentContainer: MyComponentContainer
 }
-

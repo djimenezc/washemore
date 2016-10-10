@@ -5,7 +5,6 @@ import {Provider} from 'react-redux'
 import {store, ComparisonRedux} from '../react-redux/comparison'
 import {MyComponentContainer} from '../react/comparison'
 import {ComparisonFlux} from '../react-flux/comparison'
-import createNodeTree from '../createNodeTree'
 
 import {Router, Route, hashHistory} from 'react-router'
 import Links from './Links'
@@ -24,7 +23,6 @@ class Routes extends React.Component {
             <div>
               <MyComponentContainer
                 name={name}
-                createNodeTree={createNodeTree}
                 nNodes={routeInfo.location.query.nNodes}
                 nLevels={routeInfo.location.query.nLevels}
               />
