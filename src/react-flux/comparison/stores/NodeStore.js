@@ -1,4 +1,5 @@
 import {EventEmitter} from 'events';
+import createNodeTree from '../../../createNodeTree'
 
 import dispatcher from '../dispatcher';
 
@@ -6,6 +7,8 @@ class TodoStore extends EventEmitter {
   constructor() {
     super();
     this.nodes = [];
+    this.nLevels = 0;
+    this.nNodes = 0;
   }
 
   createTodo(text) {
@@ -20,8 +23,15 @@ class TodoStore extends EventEmitter {
     this.emit('change');
   }
 
-  getAll() {
-    return this.todos;
+  buildNodes(nNodes, nLevels) {
+
+    this.nNodes = parseInt(nNodes);
+    this.nLevels = parseInt(nLevels);
+    this.nodes = createNodeTree(nLevels, nNodes);
+
+    this.emit('change');
+
+    return this.nodes;
   }
 
   handleActions(action) {

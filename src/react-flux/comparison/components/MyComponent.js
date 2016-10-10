@@ -6,27 +6,35 @@ class MyComponent extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.getNodes = this.getNodes.bind(this);
+    const {nNodes, nLevels} = props;
     this.state = {
-      nodes: NodeStore.getAll()
+      nodes: NodeStore.buildNodes(nNodes, nLevels)
     }
   }
 
   changeNumberLevels(event) {
-    var nLevels = event.target.value;
-    var nNodes = this.state.nNodes;
-
-    this.props.changeGrid(nLevels, nNodes);
   }
 
   changeNumberNodes(event) {
-    var nLevels = this.props.nLevels;
-    var nNodes = event.target.value;
-
-    this.props.changeGrid(nLevels, nNodes);
   }
 
   changeName(event) {
-    this.props.changeName(event.target.value)
+  }
+
+  getNodes() {
+    this.setState({
+      nodes: NodeStore.buildNodes(this.state.nNodes, this.state.nLevels)
+    });
+  }
+
+  componentWillMount() {
+    NodeStore.on('change', this.getNodes);
+  }
+
+  componentWillUnmount() {
+    NodeStore.removeListener('change', this.getNodes);
   }
 
   render() {
@@ -46,10 +54,11 @@ class MyComponent extends React.Component {
         </li>
       }
     };
+    debugger;
 
     const nodeLines = this.state.nodes ?
       <ul>
-        {this.props.nodes.map(createChildren)}
+        {this.state.nodes.map(createChildren)}
       </ul>
       : [];
 
