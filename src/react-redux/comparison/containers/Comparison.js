@@ -41,8 +41,8 @@ class AppComponent extends React.Component {
         <div>
           <Comparison props={this.props}
                       changeName={this.changeName.bind(this)}
-                      changeNumberNodes={this.changeNumberNodes}
-                      changeNumberLevels={this.changeNumberLevels}/>
+                      changeNumberNodes={this.changeNumberNodes.bind(this)}
+                      changeNumberLevels={this.changeNumberLevels.bind(this)}/>
         </div>
       </div>
     );

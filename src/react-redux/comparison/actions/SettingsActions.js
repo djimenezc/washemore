@@ -15,28 +15,25 @@ export function changeName(name) {
   }
 }
 
-export function changeNodesNumber(nNodes) {
+function changeNumber(number, type) {
 
-  let nNodesParsed = nNodes.currentTarget ? nNodes.currentTarget.value : nNodes;
-  nNodesParsed = parseInt(nNodesParsed);
+  let numberParsed = number.currentTarget ? number.currentTarget.value : number;
+  numberParsed = parseInt(numberParsed) || 0;
 
   return {
-    type: CHANGE_NODES_NUMBER,
+    type: type,
     payload: {
-      number: nNodesParsed
+      number: numberParsed
     }
   }
 }
 
+export function changeNodesNumber(nNodes) {
+
+  return changeNumber(nNodes, CHANGE_NODES_NUMBER);
+}
+
 export function changeLevelsNumber(nLevels) {
 
-  let nLevelsParsed = nLevels.currentTarget ? nLevels.currentTarget.value : nLevels;
-  nLevelsParsed = parseInt(nLevelsParsed);
-
-  return {
-    type: CHANGE_LEVELS_NUMBER,
-    payload: {
-      number: nLevelsParsed
-    }
-  }
+  return changeNumber(nLevels, CHANGE_LEVELS_NUMBER);
 }
