@@ -10,8 +10,6 @@ class AppComponent extends React.Component {
 
   render() {
 
-    console.dir(this.props);
-
     return (
       <div className="index">
 
