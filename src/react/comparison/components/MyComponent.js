@@ -55,15 +55,17 @@ class MyComponent extends React.Component {
         <h2>Hello world {this.props.name} - {this.props.nNodes}
           - {this.props.nLevels}</h2>
         <div>
-          Name: <input name="filter" type="text" value={this.props.name}
-                       onChange={ this.changeName.bind(this)}/>
-          <br/>
-          nNodes: <input name="filter" type="text" value={this.props.nNodes}
-                         onChange={this.changeNumberNodes.bind(this)}/>
-          <br/>
-          nLevels: <input name="filter" type="text" value={this.props.nLevels}
-                          onChange={this.changeNumberLevels.bind(this)}/>
-          <br/>
+          <p>Name: <input name="filter" type="text" value={this.props.name}
+                          onChange={ this.changeName.bind(this)}/>
+          </p>
+          <p>nNodes: <input name="filter" type="text" value={this.props.nNodes}
+                            onChange={this.changeNumberNodes.bind(this)}/>
+          </p>
+          <p> nLevels: <input name="filter" type="text"
+                              value={this.props.nLevels}
+                              onChange={this.changeNumberLevels.bind(this)}/>
+          </p>
+
           {nodeLines}
         </div>
       </div>
