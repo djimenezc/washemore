@@ -1,7 +1,7 @@
 import React from 'react'
 import {Provider} from 'react-redux'
 //TOOLS
-import DevTools from '../react-redux/comparison/containers/devTools'
+// import DevTools from '../react-redux/comparison/containers/devTools'
 //noinspection ES6UnusedImports
 import {store, ComparisonRedux, reduxActions} from '../react-redux/comparison'
 import {MyComponentContainer} from '../react/comparison'
@@ -54,7 +54,7 @@ class Routes extends React.Component {
               <Route path="*" name="Route not matched" component={NoMatch}/>
             </Route>
           </Router>
-          <DevTools />
+          {/*<DevTools />*/}
         </div>
       </Provider>
 

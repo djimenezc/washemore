@@ -2,23 +2,19 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise-middleware';
 import reducers from '../reducers';
-import DevTools from '../containers/devTools'
+// import DevTools from '../containers/devTools'
 import {applyMiddleware, createStore, compose} from 'redux'
 
 const middleware = applyMiddleware(promise(), thunk, logger());
 
-const enhancer = compose(
-  // Middleware you want to use in development:
-  middleware,
-  // Required! Enable Redux DevTools with the monitors you chose
-  DevTools.instrument()
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-// const reducersDev = [
-//   ...reducers,
-//   DevTools.instrument()
-// ];
-// const store = createStore(reducersDev,middleware);
+const enhancer = composeEnhancers(
+  // Middleware you want to use in development:
+  middleware
+  // Required! Enable Redux DevTools with the monitors you chose
+  // DevTools.instrument()
+);
 
 function configureStore(initialState) {
   // Note: only Redux >= 3.1.0 supports passing enhancer as third argument.
