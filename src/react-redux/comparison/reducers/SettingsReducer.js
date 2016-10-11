@@ -25,7 +25,7 @@ export default (state = defaults, action) => {
     break;
   }
 
-  case actionTypes.UPDATE_NODE_SETTINGS : {
+  case actionTypes.UPDATE_NODE_LIST : {
     state = {
       ...state,
       nLevels: action.payload.nLevels,

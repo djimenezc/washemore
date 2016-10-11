@@ -2,7 +2,8 @@ import {
   CHANGE_NAME,
   CHANGE_LEVELS_NUMBER,
   CHANGE_NODES_NUMBER,
-  UPDATE_NODE_LIST
+  UPDATE_NODE_LIST,
+  BUILD_NODE_LIST
 } from '../actionTypes';
 
 export function changeName(name) {
@@ -33,19 +34,36 @@ function changeNumber(number, type) {
 }
 
 export function changeNodesNumber(nNodes) {
-  return changeNumber(nNodes, CHANGE_NODES_NUMBER);
+
+  return (dispatch, getState) => {
+    dispatch(changeNumber(nNodes, CHANGE_NODES_NUMBER));
+    const nNodesState = getState().settings.nNodes;
+    const nLevelsState = getState().settings.nLevels;
+    dispatch(buildNodeListAction(BUILD_NODE_LIST, nNodesState, nLevelsState))
+  }
 }
 
 export function changeLevelsNumber(nLevels) {
-  return changeNumber(nLevels, CHANGE_LEVELS_NUMBER);
+
+  return (dispatch, getState) => {
+    dispatch(changeNumber(nLevels, CHANGE_LEVELS_NUMBER));
+    const nNodesState = getState().settings.nNodes;
+    const nLevelsState = getState().settings.nLevels;
+    dispatch(buildNodeListAction(BUILD_NODE_LIST, nNodesState, nLevelsState))
+  }
 }
 
-export function updateNodeList(nNodes, nLevels) {
+function buildNodeListAction(actionName, nNodes, nLevels) {
+
   return {
-    type: UPDATE_NODE_LIST,
+    type: actionName,
     payload: {
       nNodes: parseNumberSetting(nNodes),
       nLevels: parseNumberSetting(nLevels)
     }
   }
+}
+
+export function updateNodeList(nNodes, nLevels) {
+  return buildNodeListAction(UPDATE_NODE_LIST, nNodes, nLevels)
 }
