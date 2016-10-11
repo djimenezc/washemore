@@ -24,6 +24,15 @@ export default (state = defaults, action) => {
     state = {...state, nLevels: action.payload.number};
     break;
   }
+
+  case actionTypes.UPDATE_NODE_SETTINGS : {
+    state = {
+      ...state,
+      nLevels: action.payload.nLevels,
+      nNodes: action.payload.nNodes
+    };
+    break;
+  }
   }
 
   return state;

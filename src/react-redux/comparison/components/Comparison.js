@@ -1,26 +1,38 @@
 import React, {PropTypes} from 'react';
 
-const NodeList = ({props, changeName, changeNumberNodes, changeNumberLevels}) => {
+const createChildren = (node, name) => {
+  if (node) {
+    const children = node.nodes ?
+      <ul>
+        {node.nodes.map(createChildrenCurriedName(name))}
+      </ul> : [];
+
+    return <li key={node.id}>
+      {node.name} - {name}
+      {children}
+    </li>
+  }
+};
+
+/**
+ * Curried function
+ * @param name
+ * @returns {Function}
+ */
+const createChildrenCurriedName = (name) => {
+
+  return function (node) {
+    return createChildren(node, name);
+  };
+};
+
+const NodeListRender = ({props, changeName, changeNumberNodes, changeNumberLevels}) => {
 
   console.log('nodelist rendering');
 
-  var createChildren = (node) => {
-    if (node) {
-      const children = node.nodes ?
-        <ul>
-          {node.nodes.map(createChildren)}
-        </ul> : [];
-
-      return <li key={node.id}>
-        {node.name} - {this.props.name}
-        {children}
-      </li>
-    }
-  };
-
   const nodeLines = props.nodes ?
     <ul>
-      {props.nodes.map(createChildren)}
+      {props.nodes.map(createChildrenCurriedName(props.name))}
     </ul>
     : [];
 
@@ -48,10 +60,10 @@ const NodeList = ({props, changeName, changeNumberNodes, changeNumberLevels}) =>
   );
 };
 
-NodeList.propTypes = {
+NodeListRender.propTypes = {
   changeName: PropTypes.func.isRequired,
   changeNumberNodes: PropTypes.func.isRequired,
   changeNumberLevels: PropTypes.func.isRequired
 };
 
-export default NodeList;
+export default NodeListRender;

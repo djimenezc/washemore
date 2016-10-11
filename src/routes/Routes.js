@@ -30,9 +30,11 @@ class Routes extends React.Component {
           )}/>
           <Route path="redux" name="Redux" component={(routeInfo) => {
 
+            const {nNodes, nLevels} = routeInfo.location.query;
             store.dispatch(reduxActions.changeName(name));
-            store.dispatch(reduxActions.changeNodesNumber(routeInfo.location.query.nNodes));
-            store.dispatch(reduxActions.changeLevelsNumber(routeInfo.location.query.nLevels));
+            //store.dispatch(reduxActions.changeNodesNumber(routeInfo.location.query.nNodes));
+            //store.dispatch(reduxActions.changeLevelsNumber(routeInfo.location.query.nLevels));
+            store.dispatch(reduxActions.updateNodeList(nNodes, nLevels));
 
             return <Provider store={store}>
               <div>
