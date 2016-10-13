@@ -1,5 +1,5 @@
 import React from 'react';
-import {push, goBack} from 'react-router-redux'
+import {push, goBack, goForward} from 'react-router-redux'
 import {connect} from 'react-redux'
 
 @connect((store) => {
@@ -30,9 +30,15 @@ class RedirectExample extends React.Component {
   }
 
   goBack() {
-    console.log('goBack');
+    console.log('go back');
 
     this.props.dispatch(goBack());
+  }
+
+  goForward() {
+    console.log('go forward');
+
+    this.props.dispatch(goForward());
   }
 
   render() {
@@ -45,6 +51,8 @@ class RedirectExample extends React.Component {
                value="Increase nNodes query param"/>
         <input type="button" onClick={this.goBack.bind(this)}
                value="Go back"/>
+        <input type="button" onClick={this.goForward.bind(this)}
+               value="Go forward"/>
       </div>
     </div>
   }
