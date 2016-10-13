@@ -12,12 +12,13 @@ import {
   ToggleAnimatedButton,
   SortablePane
 } from '../react/comparison'
-import {ComparisonFlux} from '../react-flux/comparison'
+import {ComparisonFlux, RedirectExample} from '../react-flux/comparison'
 //ROUTER
-import {Router, Route, browserHistory, IndexRoute} from 'react-router'
+import {Router, Route, browserHistory, IndexRoute, Redirect} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
 import Links from './Links'
 import NoMatch from './NoMatch'
+
 
 class Routes extends React.Component {
 
@@ -57,7 +58,9 @@ class Routes extends React.Component {
                 return <div>
                   <ComparisonRedux/>
                 </div>
-              }}/>
+              }}>
+                <Redirect from='redirect' to='/redux'/>
+              </Route>
               <Route path="flux" name="Flux" component={(routeInfo) => {
                 return <div>
                   <ComparisonFlux name={name}
