@@ -33,6 +33,24 @@ export default React.createClass({
             }}>
               React demo
             </Link>
+            <ul>
+              <li>
+                <Link to={{
+                  pathname: '/react/animation',
+                  query: queryParams
+                }}>
+                  Animation
+                </Link>
+              </li>
+              <li>
+                <Link to={{
+                  pathname: '/react/toggleButton',
+                  query: queryParams
+                }}>
+                  Toggle Animated Button
+                </Link>
+              </li>
+            </ul>
           </li>
           <li>
             <Link to={{

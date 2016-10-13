@@ -4,10 +4,16 @@ import {Provider} from 'react-redux'
 // import DevTools from '../react-redux/comparison/containers/devTools'
 //noinspection ES6UnusedImports
 import {store, ComparisonRedux, reduxActions} from '../react-redux/comparison'
-import {MyComponentContainer} from '../react/comparison'
+//noinspection ES6UnusedImports
+import {
+  MyComponentContainer,
+  Animation,
+  Home,
+  ToggleAnimatedButton
+} from '../react/comparison'
 import {ComparisonFlux} from '../react-flux/comparison'
 //ROUTER
-import {Router, Route, browserHistory} from 'react-router'
+import {Router, Route, browserHistory, IndexRoute} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
 import Links from './Links'
 import NoMatch from './NoMatch'
@@ -24,15 +30,21 @@ class Routes extends React.Component {
         <div>
           <Router history={history}>
             <Route path="/" name="Root" component={Links}>
-              <Route path="react" name="React" component={(routeInfo) => (
-                <div>
-                  <MyComponentContainer
-                    name={name}
-                    nNodes={routeInfo.location.query.nNodes}
-                    nLevels={routeInfo.location.query.nLevels}
-                  />
-                </div>
-              )}/>
+              <IndexRoute component={Home}/>
+              <Route path="react" name="React">
+                <IndexRoute component={(routeInfo) => (
+                  <div>
+                    <MyComponentContainer
+                      name={name}
+                      nNodes={routeInfo.location.query.nNodes}
+                      nLevels={routeInfo.location.query.nLevels}
+                    />
+                  </div>
+                )}/>
+                <Route path="animation" name="Animation" component={Animation}/>
+                <Route path="toggleButton" name="Toggle Button"
+                       component={ToggleAnimatedButton}/>
+              </Route>
               <Route path="redux" name="Redux" component={(routeInfo) => {
 
                 const {nNodes, nLevels} = routeInfo.location.query;
