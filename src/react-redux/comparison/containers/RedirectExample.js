@@ -1,6 +1,5 @@
 import React from 'react';
 import {push, goBack} from 'react-router-redux'
-import {increaseNodeNumber} from '../actions'
 import {connect} from 'react-redux'
 
 @connect((store) => {
@@ -22,7 +21,12 @@ class RedirectExample extends React.Component {
   increaseNodesNumber() {
     console.log('increaseNodesNumber');
 
-    this.props.dispatch(increaseNodeNumber);
+    this.props.dispatch(push({
+      pathname: '/redux/redirectExample',
+      query: {
+        nNodes: parseInt(this.props.nNodes || 0) + 1
+      }
+    }));
   }
 
   goBack() {
