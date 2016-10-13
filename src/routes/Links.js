@@ -72,8 +72,17 @@ export default React.createClass({
             <ul>
               <li>
                 <Link to={{
-                  pathname: '/redux/redirect',
-                  query: queryParams
+                  pathname: '/redux/redirect'
+                }}>
+                  Redirect
+                </Link>
+              </li>
+              <li>
+                <Link to={{
+                  pathname: '/redux/redirectExample',
+                  query: {
+                    nNodes: 20
+                  }
                 }}>
                   Redirect action with push
                 </Link>

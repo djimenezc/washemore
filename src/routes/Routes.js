@@ -3,7 +3,12 @@ import {Provider} from 'react-redux'
 //TOOLS
 // import DevTools from '../react-redux/comparison/containers/devTools'
 //noinspection ES6UnusedImports
-import {store, ComparisonRedux, reduxActions} from '../react-redux/comparison'
+import {
+  store,
+  ComparisonRedux,
+  reduxActions,
+  RedirectExample
+} from '../react-redux/comparison'
 //noinspection ES6UnusedImports
 import {
   MyComponentContainer,
@@ -12,7 +17,7 @@ import {
   ToggleAnimatedButton,
   SortablePane
 } from '../react/comparison'
-import {ComparisonFlux, RedirectExample} from '../react-flux/comparison'
+import {ComparisonFlux} from '../react-flux/comparison'
 //ROUTER
 import {Router, Route, browserHistory, IndexRoute, Redirect} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
@@ -49,17 +54,20 @@ class Routes extends React.Component {
                 <Route path="sortablePane" name="Menu Motion"
                        component={SortablePane}/>
               </Route>
-              <Route path="redux" name="Redux" component={(routeInfo) => {
+              <Route path="redux" name="Redux">
+                <IndexRoute component={(routeInfo) => {
 
-                const {nNodes, nLevels} = routeInfo.location.query;
-                store.dispatch(reduxActions.changeName(name));
-                store.dispatch(reduxActions.updateNodeList(nNodes, nLevels));
+                  const {nNodes, nLevels} = routeInfo.location.query;
+                  store.dispatch(reduxActions.changeName(name));
+                  store.dispatch(reduxActions.updateNodeList(nNodes, nLevels));
 
-                return <div>
-                  <ComparisonRedux/>
-                </div>
-              }}>
-                <Redirect from='redirect' to='/redux'/>
+                  return <div>
+                    <ComparisonRedux/>
+                  </div>
+                }}/>
+                <Route path='redirectExample' name='redirectExample'
+                       component={RedirectExample}/>
+                <Redirect from='redirect' to='/react/sortablePane'/>
               </Route>
               <Route path="flux" name="Flux" component={(routeInfo) => {
                 return <div>

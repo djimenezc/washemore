@@ -1,7 +1,7 @@
 import Comparison from './Comparison'
-import Redirect from './RedirectExample'
+import RedirectExample from './RedirectExample'
 
 export default {
   Comparison,
-  Redirect
+  RedirectExample
 };

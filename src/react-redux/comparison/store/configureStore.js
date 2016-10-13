@@ -2,10 +2,14 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import promise from 'redux-promise-middleware';
 import reducers from '../reducers';
+import {routerMiddleware} from 'react-router-redux'
+import {browserHistory} from 'react-router'
 // import DevTools from '../containers/devTools'
 import {applyMiddleware, createStore, compose} from 'redux'
 
-const middleware = applyMiddleware(promise(), thunk, logger());
+const routerMiddlewareWrapped = routerMiddleware(browserHistory);
+
+const middleware = applyMiddleware(promise(), thunk, logger(), routerMiddlewareWrapped);
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
