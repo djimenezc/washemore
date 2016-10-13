@@ -12,7 +12,9 @@ const queryParams = {
 };
 
 export default React.createClass({
+
   render() {
+
     return (
       <div>
 
@@ -48,6 +50,14 @@ export default React.createClass({
                   query: queryParams
                 }}>
                   Toggle Animated Button
+                </Link>
+              </li>
+              <li>
+                <Link to={{
+                  pathname: '/react/sortablePane',
+                  query: queryParams
+                }}>
+                  Sortable pane
                 </Link>
               </li>
             </ul>

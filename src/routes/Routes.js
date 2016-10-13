@@ -9,7 +9,8 @@ import {
   MyComponentContainer,
   Animation,
   Home,
-  ToggleAnimatedButton
+  ToggleAnimatedButton,
+  SortablePane
 } from '../react/comparison'
 import {ComparisonFlux} from '../react-flux/comparison'
 //ROUTER
@@ -44,6 +45,8 @@ class Routes extends React.Component {
                 <Route path="animation" name="Animation" component={Animation}/>
                 <Route path="toggleButton" name="Toggle Button"
                        component={ToggleAnimatedButton}/>
+                <Route path="sortablePane" name="Menu Motion"
+                       component={SortablePane}/>
               </Route>
               <Route path="redux" name="Redux" component={(routeInfo) => {
 

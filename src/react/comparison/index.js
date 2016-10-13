@@ -4,7 +4,8 @@ import {
   MyComponentContainer,
   Home,
   Animation,
-  ToggleAnimatedButton
+  ToggleAnimatedButton,
+  SortablePane
 } from './components'
 
 export default {
@@ -12,5 +13,6 @@ export default {
   MyComponentContainer: MyComponentContainer,
   Home,
   Animation,
-  ToggleAnimatedButton
+  ToggleAnimatedButton,
+  SortablePane
 }
