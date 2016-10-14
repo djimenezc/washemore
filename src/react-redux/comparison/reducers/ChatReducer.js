@@ -5,7 +5,7 @@ import {
 } from '../actionTypes';
 
 const defaultState = {
-  statusMessage: '',
+  statusMessage: 'disconnected',
   userName: 'Anonymous',
   chats: []
 };

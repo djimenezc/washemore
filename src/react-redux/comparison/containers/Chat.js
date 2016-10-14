@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {changeUserName} from '../actions'
+import {changeUserName, changeStatus} from '../actions'
 
 @connect((store) => {
   return {
@@ -16,8 +16,11 @@ class Chat extends React.Component {
   }
 
   changeUserName() {
-    debugger;
     this.props.dispatch(changeUserName(this.state.userName));
+  }
+
+  changeStatus() {
+    this.props.dispatch(changeStatus(this.state.status));
   }
 
   updateUserName(event) {
@@ -26,9 +29,16 @@ class Chat extends React.Component {
     })
   }
 
+  updateStatus(event) {
+    this.setState({
+      status: event.target.value
+    })
+  }
+
   componentWillMount() {
     this.setState({
-      userName: this.props.userName
+      userName: this.props.userName,
+      status: this.props.status
     })
   }
 
@@ -37,17 +47,31 @@ class Chat extends React.Component {
       <h3>Chat info</h3>
       <div>
         <p>Status: {this.props.status}</p>
-        <p>userName: {this.props.userName}</p>
+        <p>UserName: {this.props.userName}</p>
       </div>
 
       <div>
         <h4>Update info</h4>
-        <span>
-          <input type="text" value={this.state.userName}
-                 onChange={this.updateUserName.bind(this)}/>
-          <input type="button" onClick={this.changeUserName.bind(this)}
-                 value='Change User Name'/>
-        </span>
+        <div>
+          <div>
+            <input type="text" value={this.state.userName}
+                   onChange={this.updateUserName.bind(this)}/>
+            <input type="button" onClick={this.changeUserName.bind(this)}
+                   value='Change User Name'/>
+          </div>
+          <div>
+            <input type="text" value={this.state.status}
+                   onChange={this.updateStatus.bind(this)}/>
+            <input type="button" onClick={this.changeStatus.bind(this)}
+                   value='Change Status'/>
+          </div>
+          <div>
+            <input type="text" value={this.state.status}
+                   onChange={this.updateStatus.bind(this)}/>
+            <input type="button" onClick={this.changeStatus.bind(this)}
+                   value='Add message'/>
+          </div>
+        </div>
       </div>
     </div>
   }
