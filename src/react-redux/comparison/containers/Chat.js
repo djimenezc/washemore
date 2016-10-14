@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {changeUserName, changeStatus} from '../actions'
+import {changeUserName, changeStatus, addChat} from '../actions'
 
 @connect((store) => {
   return {
-    chats: store.chat.chats,
+    chats: store.chat.chatLog,
     status: store.chat.statusMessage,
     userName: store.chat.userName
   };
@@ -23,6 +23,17 @@ class Chat extends React.Component {
     this.props.dispatch(changeStatus(this.state.status));
   }
 
+  addMessage() {
+    this.props.dispatch(addChat({
+      msg: this.state.message,
+      user: this.props.userName
+    }));
+
+    this.setState({
+      message: ''
+    });
+  }
+
   updateUserName(event) {
     this.setState({
       userName: event.target.value
@@ -35,14 +46,35 @@ class Chat extends React.Component {
     })
   }
 
+  updateMessage(event) {
+    this.setState({
+      message: event.target.value
+    })
+  }
+
+  _handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      this.addMessage();
+    }
+  }
+
   componentWillMount() {
     this.setState({
       userName: this.props.userName,
-      status: this.props.status
+      status: this.props.status,
+      message: ''
     })
   }
 
   render() {
+
+    const items = this.props.chats.map((item) => (
+      <div key={item.id}>
+        <div>Id: {item.id} Time: {item.timeStamp} User: {item.user}</div>
+        <div>Message: {item.msg}</div>
+      </div>
+    ));
+
     return <div>
       <h3>Chat info</h3>
       <div>
@@ -66,11 +98,14 @@ class Chat extends React.Component {
                    value='Change Status'/>
           </div>
           <div>
-            <input type="text" value={this.state.status}
-                   onChange={this.updateStatus.bind(this)}/>
-            <input type="button" onClick={this.changeStatus.bind(this)}
+            <input type="text"
+                   value={this.state.message}
+                   onChange={this.updateMessage.bind(this)}
+                   onKeyPress={this._handleKeyPress.bind(this)}/>
+            <input type="button" onClick={this.addMessage.bind(this)}
                    value='Add message'/>
           </div>
+          {items}
         </div>
       </div>
     </div>

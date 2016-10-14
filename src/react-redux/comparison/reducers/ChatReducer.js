@@ -7,7 +7,7 @@ import {
 const defaultState = {
   statusMessage: 'disconnected',
   userName: 'Anonymous',
-  chats: []
+  chatLog: []
 };
 
 export default (state = defaultState, action = {}) => {
