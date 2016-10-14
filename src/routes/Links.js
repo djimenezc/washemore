@@ -72,6 +72,13 @@ export default React.createClass({
             <ul>
               <li>
                 <Link to={{
+                  pathname: '/redux/chat'
+                }}>
+                  Chat example
+                </Link>
+              </li>
+              <li>
+                <Link to={{
                   pathname: '/redux/redirect'
                 }}>
                   Redirect

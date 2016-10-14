@@ -7,7 +7,8 @@ import {
   store,
   ComparisonRedux,
   reduxActions,
-  RedirectExample
+  RedirectExample,
+  Chat
 } from '../react-redux/comparison'
 //noinspection ES6UnusedImports
 import {
@@ -65,6 +66,8 @@ class Routes extends React.Component {
                     <ComparisonRedux/>
                   </div>
                 }}/>
+                <Route path='chat' name='chat'
+                       component={Chat}/>
                 <Route path='redirectExample' name='redirectExample'
                        component={RedirectExample}/>
                 <Redirect from='redirect' to='/react/sortablePane'/>
