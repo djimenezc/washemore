@@ -4,7 +4,8 @@ import {connect} from 'react-redux'
 
 @connect((store) => {
   return {
-    nNodes: store.routing.locationBeforeTransitions.query.nNodes
+    nNodes: store.routing.locationBeforeTransitions.query.nNodes,
+    nLevels: store.settings.nLevels
   };
 })
 class RedirectExample extends React.Component {
@@ -29,6 +30,17 @@ class RedirectExample extends React.Component {
     }));
   }
 
+  increaseLevelNumber() {
+    console.log('increaseLevelNumber');
+
+    this.props.dispatch(push({
+      pathname: '/redux/redirectExample',
+      query: {
+        nLevel: parseInt(this.props.nLevels || 0) + 1
+      }
+    }));
+  }
+
   goBack() {
     console.log('go back');
 
@@ -44,11 +56,14 @@ class RedirectExample extends React.Component {
   render() {
     return <div>
       hello redirect example nNodes from url query params: {this.props.nNodes}
+      nLevels {this.props.nLevels}
       <div>
         <input type="button" onClick={this.handlerClick.bind(this)}
                value="Redirect to redux example"/>
         <input type="button" onClick={this.increaseNodesNumber.bind(this)}
                value="Increase nNodes query param"/>
+        <input type="button" onClick={this.increaseLevelNumber.bind(this)}
+               value="Increase nLevels query param using settings reducer"/>
         <input type="button" onClick={this.goBack.bind(this)}
                value="Go back"/>
         <input type="button" onClick={this.goForward.bind(this)}
