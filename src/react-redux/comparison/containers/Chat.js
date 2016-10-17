@@ -1,12 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {changeUserName, changeStatus, addChat} from '../actions'
+import {recentlyActiveUsers} from '../selectors'
 
 @connect((store) => {
   return {
     chats: store.chat.chatLog,
     status: store.chat.statusMessage,
-    userName: store.chat.userName
+    userName: store.chat.userName,
+    storeState: store,
+    recentlyActiveUsers
   };
 })
 class Chat extends React.Component {
@@ -74,12 +77,21 @@ class Chat extends React.Component {
         <div>Message: {item.msg}</div>
       </div>
     ));
+    const recentlyActiveUsers = this.props.recentlyActiveUsers(this.props.storeState)
+      .map((userName) => (
+        <li key={userName}>
+          {userName}
+        </li>
+      ));
 
     return <div>
       <h3>Chat info</h3>
       <div>
         <p>Status: {this.props.status}</p>
         <p>UserName: {this.props.userName}</p>
+        <ul>recently Active Users
+          {recentlyActiveUsers}
+        </ul>
       </div>
 
       <div>
