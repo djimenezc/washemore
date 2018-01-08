@@ -12,7 +12,9 @@ const queryParams = {
 };
 
 export default React.createClass({
+
   render() {
+
     return (
       <div>
 
@@ -42,6 +44,22 @@ export default React.createClass({
                   Animation
                 </Link>
               </li>
+              <li>
+                <Link to={{
+                  pathname: '/react/toggleButton',
+                  query: queryParams
+                }}>
+                  Toggle Animated Button
+                </Link>
+              </li>
+              <li>
+                <Link to={{
+                  pathname: '/react/sortablePane',
+                  query: queryParams
+                }}>
+                  Sortable pane
+                </Link>
+              </li>
             </ul>
           </li>
           <li>
@@ -51,6 +69,32 @@ export default React.createClass({
             }}>
               Redux
             </Link>
+            <ul>
+              <li>
+                <Link to={{
+                  pathname: '/redux/chat'
+                }}>
+                  Chat example
+                </Link>
+              </li>
+              <li>
+                <Link to={{
+                  pathname: '/redux/redirect'
+                }}>
+                  Redirect
+                </Link>
+              </li>
+              <li>
+                <Link to={{
+                  pathname: '/redux/redirectExample',
+                  query: {
+                    nNodes: 20
+                  }
+                }}>
+                  Redirect action with push
+                </Link>
+              </li>
+            </ul>
           </li>
           <li>
             <Link to={{

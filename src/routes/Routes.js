@@ -3,14 +3,28 @@ import {Provider} from 'react-redux'
 //TOOLS
 // import DevTools from '../react-redux/comparison/containers/devTools'
 //noinspection ES6UnusedImports
-import {store, ComparisonRedux, reduxActions} from '../react-redux/comparison'
-import {MyComponentContainer, Animation} from '../react/comparison'
+import {
+  store,
+  ComparisonRedux,
+  reduxActions,
+  RedirectExample,
+  Chat
+} from '../react-redux/comparison'
+//noinspection ES6UnusedImports
+import {
+  MyComponentContainer,
+  Animation,
+  Home,
+  ToggleAnimatedButton,
+  SortablePane
+} from '../react/comparison'
 import {ComparisonFlux} from '../react-flux/comparison'
 //ROUTER
-import {Router, Route, browserHistory} from 'react-router'
+import {Router, Route, browserHistory, IndexRoute, Redirect} from 'react-router'
 import {syncHistoryWithStore} from 'react-router-redux'
 import Links from './Links'
 import NoMatch from './NoMatch'
+
 
 class Routes extends React.Component {
 
@@ -24,31 +38,40 @@ class Routes extends React.Component {
         <div>
           <Router history={history}>
             <Route path="/" name="Root" component={Links}>
-              <Route path="react" name="React" component={(routeInfo) => (
-                <div>
-                  <MyComponentContainer
-                    name={name}
-                    nNodes={routeInfo.location.query.nNodes}
-                    nLevels={routeInfo.location.query.nLevels}
-                  />
-                </div>
-              )}>
-                <Route path="animation" name="Animation" component={() => (
+              <IndexRoute component={Home}/>
+              <Route path="react" name="React">
+                <IndexRoute component={(routeInfo) => (
                   <div>
-                    <Animation/>
+                    <MyComponentContainer
+                      name={name}
+                      nNodes={routeInfo.location.query.nNodes}
+                      nLevels={routeInfo.location.query.nLevels}
+                    />
                   </div>
                 )}/>
+                <Route path="animation" name="Animation" component={Animation}/>
+                <Route path="toggleButton" name="Toggle Button"
+                       component={ToggleAnimatedButton}/>
+                <Route path="sortablePane" name="Menu Motion"
+                       component={SortablePane}/>
               </Route>
-              <Route path="redux" name="Redux" component={(routeInfo) => {
+              <Route path="redux" name="Redux">
+                <IndexRoute component={(routeInfo) => {
 
-                const {nNodes, nLevels} = routeInfo.location.query;
-                store.dispatch(reduxActions.changeName(name));
-                store.dispatch(reduxActions.updateNodeList(nNodes, nLevels));
+                  const {nNodes, nLevels} = routeInfo.location.query;
+                  store.dispatch(reduxActions.changeName(name));
+                  store.dispatch(reduxActions.updateNodeList(nNodes, nLevels));
 
-                return <div>
-                  <ComparisonRedux/>
-                </div>
-              }}/>
+                  return <div>
+                    <ComparisonRedux/>
+                  </div>
+                }}/>
+                <Route path='chat' name='chat'
+                       component={Chat}/>
+                <Route path='redirectExample' name='redirectExample'
+                       component={RedirectExample}/>
+                <Redirect from='redirect' to='/react/sortablePane'/>
+              </Route>
               <Route path="flux" name="Flux" component={(routeInfo) => {
                 return <div>
                   <ComparisonFlux name={name}

@@ -10,6 +10,14 @@ export default (state = defaults, action) => {
 
   switch (action.type) {
 
+  case actionTypes.CHANGE_LOCATION : {
+    console.log(actionTypes.CHANGE_LOCATION, action.payload.pathname, action.payload.query);
+    if (action.payload.query.nLevel) {
+      state = {...state, nLevels: parseInt(action.payload.query.nLevel)};
+    }
+    break;
+  }
+
   case actionTypes.CHANGE_NAME : {
     state = {...state, name: action.payload.name};
     break;
@@ -34,6 +42,7 @@ export default (state = defaults, action) => {
     break;
   }
   }
+
 
   return state;
 };

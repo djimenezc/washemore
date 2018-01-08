@@ -1,7 +1,18 @@
 //noinspection ES6UnusedImports
-import {MyComponent, MyComponentContainer} from './components'
+import {
+  MyComponent,
+  MyComponentContainer,
+  Home,
+  Animation,
+  ToggleAnimatedButton,
+  SortablePane
+} from './components'
 
 export default {
   ComparisonReact: MyComponent,
-  MyComponentContainer: MyComponentContainer
+  MyComponentContainer: MyComponentContainer,
+  Home,
+  Animation,
+  ToggleAnimatedButton,
+  SortablePane
 }

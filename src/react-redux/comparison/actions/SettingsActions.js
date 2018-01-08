@@ -17,7 +17,7 @@ export function changeName(name) {
   }
 }
 
-function parseNumberSetting(number) {
+function parseNumberSetting(number = 0) {
   let numberParsed = number.currentTarget ? number.currentTarget.value : number;
 
   return parseInt(numberParsed) || 0;
