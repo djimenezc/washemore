@@ -4,7 +4,7 @@ import {Provider} from 'react-redux'
 // import DevTools from '../react-redux/comparison/containers/devTools'
 //noinspection ES6UnusedImports
 import {store, ComparisonRedux, reduxActions} from '../react-redux/comparison'
-import {MyComponentContainer} from '../react/comparison'
+import {MyComponentContainer, Animation} from '../react/comparison'
 import {ComparisonFlux} from '../react-flux/comparison'
 //ROUTER
 import {Router, Route, browserHistory} from 'react-router'
@@ -32,7 +32,13 @@ class Routes extends React.Component {
                     nLevels={routeInfo.location.query.nLevels}
                   />
                 </div>
-              )}/>
+              )}>
+                <Route path="animation" name="Animation" component={() => (
+                  <div>
+                    <Animation/>
+                  </div>
+                )}/>
+              </Route>
               <Route path="redux" name="Redux" component={(routeInfo) => {
 
                 const {nNodes, nLevels} = routeInfo.location.query;

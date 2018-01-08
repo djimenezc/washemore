@@ -33,6 +33,16 @@ export default React.createClass({
             }}>
               React demo
             </Link>
+            <ul>
+              <li>
+                <Link to={{
+                  pathname: '/react/animation',
+                  query: queryParams
+                }}>
+                  Animation
+                </Link>
+              </li>
+            </ul>
           </li>
           <li>
             <Link to={{

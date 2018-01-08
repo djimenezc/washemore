@@ -14,7 +14,7 @@ const libraryName = 'washemo-20';
 const outputFile = libraryName + '.min.js';
 const rootDir = `${__dirname}/..`;
 const libDir = `${rootDir}/dist/lib`;
-const defaultPlugins = defaultSettings.plugins;
+const defaultPlugins = defaultSettings.getDefaultPlugins();
 
 let config = Object.assign({}, baseConfig, {
   entry: path.join(__dirname, '../src/lib'),
