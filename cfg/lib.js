@@ -14,23 +14,26 @@ const libraryName = 'washemo-20';
 const outputFile = libraryName + '.min.js';
 const rootDir = `${__dirname}/..`;
 const libDir = `${rootDir}/dist/lib`;
+const defaultPlugins = defaultSettings.getDefaultPlugins();
 
 let config = Object.assign({}, baseConfig, {
   entry: path.join(__dirname, '../src/lib'),
   cache: false,
   devtool: 'sourcemap',
   plugins: [
-    new webpack.optimize.DedupePlugin(),
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': '"production"'
-    }),
-    new BowerWebpackPlugin({
-      searchResolveModulesDirectories: false
-    }),
-    new webpack.optimize.UglifyJsPlugin({ minimize: true }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.NoErrorsPlugin()
+    ...defaultPlugins,
+    ...[new webpack.optimize.DedupePlugin(),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': '"production"'
+      }),
+      new BowerWebpackPlugin({
+        searchResolveModulesDirectories: false
+      }),
+      new webpack.optimize.UglifyJsPlugin({minimize: true}),
+      new webpack.optimize.OccurenceOrderPlugin(),
+      new webpack.optimize.AggressiveMergingPlugin(),
+      new webpack.NoErrorsPlugin()
+    ]
   ],
   module: defaultSettings.getDefaultModules(),
   output: {
